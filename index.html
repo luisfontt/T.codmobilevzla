@@ -403,23 +403,61 @@
         </div>
     </div>
 
-    <!-- === FOOTER REDES SOCIALES === -->
-    <footer class="bg-[#020202] pt-20 pb-32 border-t border-white/5 text-center relative z-20 overflow-hidden">
-        <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h3 class="text-2xl font-military text-white uppercase mb-10 tracking-[0.2em]"><span class="text-cod-gold">RED</span> DE INTELIGENCIA</h3>
-            <div class="flex flex-wrap justify-center gap-5 md:gap-8 mb-16">
-                <!-- TikTok -->
-                <button onclick="confirmSocial('TikTok', 'https://www.tiktok.com/@t.codmobilevzla', 'text-white')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-white transition-all"><svg class="w-7 h-7 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg></button>
-                <!-- Instagram -->
-                <button onclick="confirmSocial('Instagram', 'https://www.instagram.com/t.codmobilevzla', 'text-cod-gold')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-cod-gold transition-all"><svg class="w-7 h-7 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></button>
-                <!-- WhatsApp con Icono de Teléfono -->
-                <button onclick="confirmSocial('WhatsApp', 'https://chat.whatsapp.com/L4HFAsChC369te6VIBn5Jh', 'text-green-500')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-green-500 transition-all"><svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button>
+    <!-- === FOOTER REPARADO: REDES, BRILLO Y TEXTO VISIBLE === -->
+    <footer class="relative z-10 bg-[#020202] pt-16 pb-24 border-t border-white/10 overflow-hidden">
+        
+        <!-- Decoración de fondo sutil -->
+        <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-cod-gold/50 to-transparent"></div>
+
+        <div class="container mx-auto px-4 text-center relative z-20">
+
+            <!-- Texto de Llamada a la Acción -->
+            <div class="mb-10">
+                <h3 class="text-2xl md:text-3xl font-military text-white uppercase tracking-wider mb-3 text-glow-white">
+                    <span class="text-cod-gold text-glow-gold">RED</span> DE INTELIGENCIA
+                </h3>
+                <p class="text-gray-300 font-tech text-sm md:text-base tracking-widest max-w-lg mx-auto leading-relaxed">
+                    ÚNETE A NUESTROS CANALES PARA RECIBIR COORDENADAS DE <span class="text-white border-b border-cod-orange/50">TORNEOS</span> Y <span class="text-white border-b border-cod-orange/50">SORTEOS</span>.
+                </p>
             </div>
-            <p class="text-[10px] text-gray-700 font-tech uppercase tracking-[0.5em] opacity-50">© 2024 T.CODmobileVZLA. OPERACIONES TÁCTICAS.</p>
+
+            <!-- BOTONES DE REDES (4 BOTONES: TikTok, Insta, Face, Whats) -->
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-12">
+
+                <!-- 1. TIKTOK -->
+                <button onclick="confirmSocial('TikTok', 'https://www.tiktok.com/@t.codmobilevzla?_r=1&_t=ZS-93oLQxtK96D', 'text-white', 'shadow-white')" class="group relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#0a0a0a] border border-white/10 active:border-white hover:border-white hover:bg-cod-panel transition-all duration-200 tactical-border transform active:scale-95 cursor-pointer shadow-lg hover:shadow-white/20">
+                    <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-white transition-colors duration-300"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                </button>
+
+                <!-- 2. INSTAGRAM -->
+                <button onclick="confirmSocial('Instagram', 'https://www.instagram.com/t.codmobilevzla?igsh=YTdvMzdtcGZpYzNr', 'text-cod-gold', 'shadow-yellow-500')" class="group relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#0a0a0a] border border-white/10 active:border-cod-gold hover:border-cod-gold hover:bg-cod-panel transition-all duration-200 tactical-border transform active:scale-95 cursor-pointer shadow-lg hover:shadow-yellow-500/20">
+                    <div class="absolute inset-0 bg-cod-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-cod-gold transition-colors duration-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </button>
+
+                <!-- 3. FACEBOOK (RECUPERADO) -->
+                <button onclick="confirmSocial('Facebook', 'https://www.facebook.com/share/1C4pg52dJY/', 'text-blue-500', 'shadow-blue-500')" class="group relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#0a0a0a] border border-white/10 active:border-blue-500 hover:border-blue-500 hover:bg-cod-panel transition-all duration-200 tactical-border transform active:scale-95 cursor-pointer shadow-lg hover:shadow-blue-500/20">
+                    <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-blue-500 transition-colors duration-300"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </button>
+
+                <!-- 4. WHATSAPP (ICONO TELÉFONO) -->
+                <button onclick="confirmSocial('WhatsApp', 'https://chat.whatsapp.com/L4HFAsChC369te6VIBn5Jh?mode=gi_t', 'text-green-500', 'shadow-green-500')" class="group relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#0a0a0a] border border-white/10 active:border-green-500 hover:border-green-500 hover:bg-cod-panel transition-all duration-200 tactical-border transform active:scale-95 cursor-pointer shadow-lg hover:shadow-green-500/20">
+                    <div class="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-green-500 transition-colors duration-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </button>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8">
+                <p class="text-[10px] md:text-xs text-gray-500 font-tech uppercase tracking-[0.3em] hover:text-cod-gold transition-colors cursor-default">
+                    © 2024 T.CODmobileVZLA. Operaciones Tácticas.
+                </p>
+            </div>
         </div>
     </footer>
-
     <!-- MODAL COMPRA CP -->
     <div id="purchaseModal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 pointer-events-none transition-all duration-300">
         <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closePurchaseModal()"></div>
