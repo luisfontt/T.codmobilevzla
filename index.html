@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es" class="bg-[#050505]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050505">
+    <title>T.CODmobileVZLA - Torneos</title>
+    
+    <!-- 1. TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 3. CONFIGURACIÓN COLORES -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cod: { yellow: '#FFD700', gold: '#E5C100', orange: '#FF8C00', black: '#050505', panel: '#111111', border: '#333333' },
+              vzla: { yellow: '#FCE300', blue: '#003DA5', red: '#EF3340' }
+            },
+            fontFamily: { military: ['"Black Ops One"', 'cursive'], tech: ['"Rajdhani"', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+
+    <!-- 4. ESTILOS CSS PERSONALIZADOS (RECUPERANDO GLOWS) -->
+    <style>
+      html, body { background-color: #050505; color: #e5e5e5; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+      .bg-grid { 
+        background-size: 40px 40px; 
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), 
+                          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px); 
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%); 
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb { background: #FF8C00; border-radius: 3px; }
+      
+      @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+      .animate-scan { animation: scanline 8s linear infinite; }
+      
+      .tactical-border { 
+        position: relative; width: 100%; display: block; box-sizing: border-box; 
+        clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); 
+      }
+      .tactical-border-inv { clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)); }
+      
+      .text-glow-gold { text-shadow: 0 0 15px rgba(229, 193, 0, 0.6); }
+      .text-glow-white { text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
+      .text-glow-orange { text-shadow: 0 0 15px rgba(255, 140, 0, 0.5); }
+      
+      .input-tactical { background: #0a0a0a; border: 1px solid #333; transition: all 0.3s ease; }
+      .input-tactical:focus { border-color: #FFD700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); outline: none; }
+      
+      .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cod-orange selection:text-black">
+
+    <!-- === BOTÓN MENÚ === -->
+    <button onclick="toggleMenu()" class="fixed top-5 right-5 z-[70] w-12 h-12 bg-cod-black/90 border border-cod-gold/50 backdrop-blur-md flex flex-col items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(255,215,0,0.3)] tactical-border cursor-pointer">
+        <span id="line1" class="w-6 h-0.5 bg-white transition-all"></span>
+        <span id="line2" class="w-6 h-0.5 bg-white transition-all"></span>
+        <span id="line3" class="w-4 h-0.5 bg-cod-gold transition-all self-end mr-3"></span>
+    </button>
+
+    <!-- === MENÚ OVERLAY === -->
+    <div id="tacticalMenu" class="fixed inset-0 z-[65] bg-black/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 ease-out flex flex-col items-center justify-center">
+        <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+        <nav class="flex flex-col gap-8 text-center relative z-10 font-military uppercase tracking-[0.2em]">
+            <button onclick="changeView('home')" class="text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">INICIO</button>
+            <button onclick="changeView('databank')" class="text-3xl text-white hover:text-cod-orange transition-all cursor-pointer">CLASES & HUD</button>
+            <button onclick="changeView('hall')" class="text-3xl text-white hover:text-red-500 transition-all cursor-pointer">HALL DE FAMA</button>
+            <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-xl text-gray-500 hover:text-white transition-all cursor-pointer">TIENDA CP</button>
+        </nav>
+    </div>
+
+    <!-- === VISTA PRINCIPAL (HOME) === -->
+    <div id="view-home" class="view-section">
+        
+        <!-- HEADER (Dentro de home para que desaparezca) -->
+        <header class="w-full relative pt-16 pb-10 px-4 overflow-hidden bg-cod-black border-b border-cod-border">
+          <div class="absolute inset-0 bg-grid opacity-50 pointer-events-none"></div>
+          <div class="max-w-5xl mx-auto relative z-10 flex flex-col items-center justify-center">
+            <div class="flex items-center gap-2 mb-6 opacity-70">
+              <div class="h-px w-12 bg-gradient-to-r from-transparent to-cod-yellow"></div>
+              <span class="text-cod-yellow font-tech uppercase tracking-[0.4em] text-xs">Battle Royale Operations</span>
+              <div class="h-px w-12 bg-gradient-to-l from-transparent to-cod-yellow"></div>
+            </div>
+            <h1 class="flex flex-col items-center justify-center font-military leading-none">
+                <div class="text-6xl md:text-8xl text-white tracking-tighter drop-shadow-2xl flex items-baseline">
+                   <span class="text-cod-yellow mr-1">T.</span><span>COD</span>
+                </div>
+                <div class="flex items-center mt-[-10px]">
+                  <span class="text-2xl md:text-4xl text-gray-400 tracking-widest uppercase mx-2">mobile</span>
+                  <span class="text-6xl md:text-8xl bg-gradient-to-r from-cod-orange to-vzla-red bg-clip-text text-transparent">VZLA</span>
+                </div>
+            </h1>
+            <p class="mt-6 text-gray-400 font-tech text-lg md:text-xl tracking-[0.3em] uppercase text-center">
+              Torneos <span class="text-cod-yellow">•</span> Sorteos <span class="text-cod-yellow">•</span> Comunidad
+            </p>
+          </div>
+        </header>
+        <main class="container mx-auto px-4 py-12 relative z-10">
+            <!-- Efecto Scanline fondo -->
+            <div class="fixed inset-0 pointer-events-none z-0 opacity-10">
+                <div class="w-full h-1 bg-white absolute animate-scan"></div>
+            </div>
+
+            <!-- ============================================= -->
+            <!-- 1. SECCIÓN: CP STORE (DISEÑO TÁCTICO)         -->
+            <!-- ============================================= -->
+            <section class="mb-24 relative z-10" id="store-section">
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex items-center justify-center gap-4 mb-10 text-center px-2">
+                        <div class="hidden md:block h-2 flex-grow bg-gradient-to-l from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
+                        <h2 class="text-4xl md:text-6xl font-military text-white uppercase tracking-wider text-glow-gold">
+                            <span class="text-cod-gold">CP</span> STORE
+                        </h2>
+                        <div class="hidden md:block h-2 flex-grow bg-gradient-to-r from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                        <!-- PAQUETE 80 CP -->
+                        <button onclick="openPurchaseModal('80 CP (850 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">80 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">850 Bs.</span>
+                        </button>
+
+                        <!-- PAQUETE 420 CP -->
+                        <button onclick="openPurchaseModal('420 CP (3,900 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">420 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">3,900 Bs.</span>
+                        </button>
+
+                        <!-- PAQUETE 880 CP -->
+                        <button onclick="openPurchaseModal('880 CP (7,400 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative active:scale-95">
+                            <div class="absolute top-0 right-0 bg-cod-gold text-black text-[10px] font-bold px-2 py-0.5 font-tech">POPULAR</div>
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">880 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">7,400 Bs.</span>
+                        </button>
+
+                        <!-- PAQUETE 2400 CP -->
+                        <button onclick="openPurchaseModal('2,400 CP (16,800 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer active:scale-95">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">2,400 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">16,800 Bs.</span>
+                        </button>
+
+                        <!-- PAQUETE 5000 CP -->
+                        <button onclick="openPurchaseModal('5,000 CP (33,880 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer active:scale-95">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">5,000 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">33,880 Bs.</span>
+                        </button>
+
+                        <!-- PAQUETE 10800 CP -->
+                        <button onclick="openPurchaseModal('10,800 CP (67,600 Bs)')" class="w-full group bg-[#0a0a0a] border border-cod-gold/30 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative shadow-[0_0_20px_rgba(229,193,0,0.15)] active:scale-95">
+                            <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 animate-pulse font-tech tracking-tighter">MÁXIMO</div>
+                            <span class="text-3xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-gold">10,800 <span class="text-sm align-top text-gray-500">CP</span></span>
+                            <div class="h-px w-10 bg-cod-gold my-3"></div>
+                            <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">67,600 Bs.</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- 2. SECCIÓN: LIGA MENSUAL (PODIO VISUAL)       -->
+            <!-- ============================================= -->
+            <section class="mb-28 relative z-10" id="ranking-section">
+                <div class="max-w-5xl mx-auto px-4">
+                    <div class="flex items-center gap-4 mb-14">
+                        <div class="h-2 flex-grow bg-gradient-to-l from-cod-yellow/50 to-transparent skew-x-[20deg]"></div>
+                        <div class="text-center">
+                            <h2 class="text-4xl font-military text-white uppercase tracking-wider">LIGA <span class="text-cod-yellow">MENSUAL</span></h2>
+                            <p class="text-xs text-gray-500 font-tech tracking-[0.4em] uppercase mt-2">Dominadores de la Sala</p>
+                        </div>
+                        <div class="h-2 flex-grow bg-gradient-to-r from-cod-yellow/50 to-transparent skew-x-[20deg]"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center md:items-end justify-center gap-10 md:gap-6 pt-4">
+                        <!-- TOP 2 (PLATA) -->
+                        <div class="w-full md:w-1/3 max-w-xs transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="tactical-border bg-[#0a0a0a] border border-gray-400/40 p-1 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-400 text-black font-black font-military px-4 py-1 text-xs skew-x-[-10deg] shadow-lg">RANGO #2</div>
+                                <div class="bg-gray-900 h-44 w-full mb-4 relative overflow-hidden flex items-center justify-center border border-white/5">
+                                    <span class="text-white/10 font-military text-5xl absolute">SILVER</span>
+                                    <h3 class="text-gray-300 font-military text-2xl uppercase relative z-10 text-center px-2">TEAM DELTA</h3>
+                                </div>
+                                <p class="text-center text-gray-500 font-tech pb-3 uppercase tracking-widest text-sm">3 Victorias</p>
+                            </div>
+                        </div>
+   <!-- TOP 1 (ORO - CAMPEÓN) -->
+                        <div class="w-full md:w-1/3 max-w-sm transform hover:-translate-y-4 transition-all duration-300 relative z-20">
+                            <!-- Corona -->
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-cod-gold animate-bounce">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M2.2 16.06c.44-.39 1.1-.34 1.48.1l.13.16 3.65-4.38-1.57-4.18c-.2-.55.35-1.07.88-.83l.14.07 4.09 2.26 4.09-2.26c.53-.29 1.15.15 1.02.73l-.01.04-1.56 4.18 3.65 4.37c.39-.44 1.05-.49 1.49-.1.44.39.49 1.05.1 1.49l-.04.04-2.14 2.14c-.98.98-2.31 1.52-3.69 1.51H8.09c-1.39 0-2.72-.53-3.7-1.5l-2.13-2.15c-.39-.44-.34-1.1.1-1.49z"/></svg>
+                            </div>
+
+                            <div class="tactical-border bg-[#111] border-2 border-cod-gold p-1 shadow-[0_0_35px_rgba(255,215,0,0.3)]">
+                                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-cod-gold text-black font-black font-military px-8 py-1.5 text-sm skew-x-[-10deg] shadow-xl">CAMPEONES</div>
+                                <div class="bg-gray-800 h-56 w-full mb-4 relative overflow-hidden flex items-center justify-center border border-cod-gold/20">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-cod-gold/30 to-transparent"></div>
+                                    <span class="text-cod-gold/10 font-military text-7xl absolute">KINGS</span>
+                                    <h3 class="text-cod-gold font-military text-4xl uppercase relative z-10 text-center tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">ESCUADRA X</h3>
+                                </div>
+                                <p class="text-center text-white font-tech font-bold pb-4 uppercase tracking-[0.3em] text-lg">7 Victorias</p>
+                            </div>
+                        </div>
+
+                        <!-- TOP 3 (BRONCE) -->
+                        <div class="w-full md:w-1/3 max-w-xs transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="tactical-border bg-[#0a0a0a] border border-orange-800/40 p-1 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-900 text-white font-black font-military px-4 py-1 text-xs skew-x-[-10deg] shadow-lg">RANGO #3</div>
+                                <div class="bg-gray-900 h-44 w-full mb-4 relative overflow-hidden flex items-center justify-center border border-white/5">
+                                    <span class="text-orange-900/10 font-military text-5xl absolute">BRONZE</span>
+                                    <h3 class="text-orange-200/80 font-military text-2xl uppercase relative z-10 text-center px-2">LOS BRAVOS</h3>
+                                </div>
+                                <p class="text-center text-gray-600 font-tech pb-3 uppercase tracking-widest text-sm">2 Victorias</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- 3. SECCIÓN: ZONA DE COMBATE (INFO TORNEO)     -->
+            <!-- ============================================= -->
+            <section class="mb-24 relative z-10">
+                <div class="flex items-center justify-center gap-4 mb-10 mt-12 px-2 text-center">
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-l from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
+                    <h2 class="text-3xl md:text-6xl font-military text-white uppercase tracking-wider text-glow-gold">
+                        ZONA DE <span class="text-cod-gold">COMBATE</span>
+                    </h2>
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-r from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
+                </div>
+
+                <div class="max-w-5xl mx-auto tactical-border bg-cod-panel/80 backdrop-blur-md border border-white/10 p-6 relative">
+                    <div class="absolute top-0 left-0 bg-cod-yellow text-black font-tech font-bold px-6 py-1.5 text-sm uppercase transform -skew-x-12 -ml-2">Estado: Cerrado</div>
+                    <div class="text-center mb-10 mt-8">
+                        <div class="inline-flex items-center gap-2 bg-white/5 px-5 py-1.5 rounded-full border border-white/10 text-xs text-gray-300 tracking-[0.2em] uppercase">
+                             <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Escuadras Inscritas: <span class="text-cod-yellow font-bold ml-1">0 / 25</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-military text-white uppercase mt-6 tracking-wide text-glow-white">Copa Battle Royale: Elite</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-red-900/20 border border-red-500/40 text-center rounded-sm">
+                            <p class="text-red-400 font-tech text-[10px] font-bold uppercase tracking-widest mb-1">Requisito Estricto</p>
+                            <p class="font-bold font-tech text-white text-lg uppercase">Nivel 150+</p>
+                        </div>
+                        <div class="p-4 bg-cod-panel border border-white/5 text-center rounded-sm">
+                            <p class="text-gray-500 font-tech text-[10px] uppercase tracking-widest mb-1">Mapa Oficial</p>
+                            <p class="font-bold font-tech text-white text-lg uppercase">Blackout</p>
+                        </div>
+                        <div class="p-4 bg-cod-panel border border-white/5 text-center rounded-sm">
+                            <p class="text-gray-500 font-tech text-[10px] uppercase tracking-widest mb-1">Premio Total</p>
+                            <p class="font-bold font-tech text-cod-yellow text-lg uppercase">$50 USD + BONOS</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- 4. SECCIÓN: INSCRIPCIÓN (FORMULARIO)          -->
+            <!-- ============================================= -->
+            <section class="mb-32 relative z-10" id="registration-section">
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex items-center gap-4 mb-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cod-yellow"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                        <h2 class="text-3xl font-military text-white uppercase tracking-wider">Inscripción al Torneo</h2>
+                        <div class="h-2 flex-grow bg-gradient-to-r from-cod-yellow/40 to-transparent skew-x-[-20deg]"></div>
+                    </div>
+
+                    <form id="enlistForm" class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                        <input type="hidden" name="form-name" value="registro-torneo">
+                        <div class="lg:col-span-7 space-y-6">
+                            <div class="group">
+                                <label class="text-cod-yellow font-tech font-bold uppercase text-xs tracking-widest mb-2 block">Nombre de Operador (IGN)</label>
+                                <input type="text" name="usuario" required placeholder="Ej: Ghost#141" class="w-full input-tactical py-5 px-6 text-white font-tech text-xl">
+                            </div>
+                            <div class="group">
+                                <label class="text-cod-yellow font-tech font-bold uppercase text-xs tracking-widest mb-2 block">WhatsApp de Contacto</label>
+                                <input type="tel" name="whatsapp" required placeholder="+58 412 0000000" class="w-full input-tactical py-5 px-6 text-white font-tech text-xl">
+                            </div>
+                            <div class="bg-blue-900/10 border-l-2 border-blue-500 p-4">
+                                <p class="text-sm text-blue-200 font-tech">
+                                    <span class="font-bold text-blue-400">[INFO]:</span> Perfil e <span class="text-white font-bold underline">HISTORIAL</span> deben ser públicos.
+                                </p>
+                            </div>
+                            <button type="submit" class="w-full bg-cod-orange hover:bg-orange-500 text-black font-military py-5 uppercase tracking-[0.2em] text-xl tactical-border cursor-pointer transition-all active:scale-95 shadow-xl shadow-orange-600/20">Confirmar Despliegue</button>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col">
+                            <label class="text-cod-yellow font-tech font-bold uppercase text-xs tracking-widest mb-3 text-center lg:text-left">Evidencia de Perfil</label>
+                            <div class="flex-grow border-2 border-dashed border-gray-700 bg-cod-panel/50 hover:border-cod-yellow transition-all flex flex-col items-center justify-center p-8 rounded-lg relative min-h-[220px] group">
+                                <input type="file" name="screenshot" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-20" required id="fileInput">
+                                <div class="w-14 h-14 bg-black border border-gray-700 rounded-full flex items-center justify-center mb-4 group-hover:border-cod-yellow transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500 group-hover:text-cod-yellow"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                </div>
+                                <span class="text-white font-military text-lg group-hover:text-cod-yellow transition-colors">SUBIR CAPTURA</span>
+                                <p id="fileNameDisplay" class="text-xs text-cod-orange mt-3 opacity-0 font-tech">Ningún archivo seleccionado</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div> <!-- FIN DE VIEW-HOME (INICIO) -->
+  <!-- ============================================================== -->
+    <!-- VISTA OCULTA 1: BANCO DE DATOS (ARSENAL & HUD)                -->
+    <!-- ============================================================== -->
+    <div id="view-databank" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
+        <div class="max-w-5xl mx-auto px-4">
+            <!-- Botón Volver -->
+            <button onclick="changeView('home')" class="mb-10 text-cod-orange font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
+                <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
+            </button>
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-2 flex-grow bg-gradient-to-l from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
+                <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center">BANCO DE <span class="text-cod-orange">DATOS</span></h2>
+                <div class="h-2 flex-grow bg-gradient-to-r from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex justify-center gap-2 mb-12">
+                <button onclick="switchTab('shotguns')" id="tab-shotguns" class="flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_20px_rgba(255,140,0,0.2)]">META ESCOPETAS</button>
+                <button onclick="switchTab('huds')" id="tab-huds" class="flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer">HUDS PRO</button>
+            </div>
+
+            <!-- Contenido META -->
+            <div id="content-shotguns" class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <div class="bg-[#0a0a0a] border border-white/10 p-6 tactical-border group hover:border-cod-orange transition-all">
+                    <div class="relative h-44 bg-gray-900 mb-6 flex items-center justify-center overflow-hidden rounded">
+                        <span class="text-7xl text-white/5 font-military">KRM</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cod-orange/10 to-transparent"></div>
+                    </div>
+                    <h3 class="text-2xl font-military text-white mb-1">KRM-262</h3>
+                    <p class="text-cod-orange font-tech text-sm mb-6 uppercase tracking-widest font-bold">Pro Config: BROKEN</p>
+                    <button onclick="copyCode('KRM-BROKEN-VZLA-2024')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95">COPIAR CÓDIGO</button>
+                </div>
+                <div class="bg-[#0a0a0a] border border-white/10 p-6 tactical-border group hover:border-cod-orange transition-all">
+                    <div class="relative h-44 bg-gray-900 mb-6 flex items-center justify-center overflow-hidden rounded">
+                        <span class="text-7xl text-white/5 font-military">HS0</span>
+                    </div>
+                    <h3 class="text-2xl font-military text-white mb-1">HS0405</h3>
+                    <p class="text-cod-orange font-tech text-sm mb-6 uppercase tracking-widest font-bold">Pro Config: T.COD VZLA</p>
+                    <button onclick="copyCode('HS0-META-VZLA-SPEED')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95">COPIAR CÓDIGO</button>
+                </div>
+            </div>
+
+            <!-- Contenido HUD -->
+            <div id="content-huds" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <div class="bg-[#0a0a0a] border border-white/10 p-6 tactical-border text-center group hover:border-cod-gold transition-all">
+                    <div class="h-44 bg-gray-900 mb-6 flex items-center justify-center border border-white/5">
+                        <span class="text-4xl text-white/20 font-military">IPAD / TABLET</span>
+                    </div>
+                    <h3 class="text-2xl font-military text-white mb-4 uppercase">HUD 4 DEDOS (PRO)</h3>
+                    <button onclick="copyCode('HUD-4D-IPAD-TCOD')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all">COPIAR CÓDIGO HUD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- VISTA OCULTA 2: HALL DE LA FAMA (VOTACIONES)                  -->
+    <!-- ============================================================== -->
+    <div id="view-hall" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
+        <div class="max-w-5xl mx-auto px-4">
+            <button onclick="changeView('home')" class="mb-10 text-red-600 font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
+                <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
+            </button>
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-2 flex-grow bg-gradient-to-l from-red-600/50 to-transparent skew-x-[20deg]"></div>
+                <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center">HALL DE LA <span class="text-red-600">FAMA</span></h2>
+                <div class="h-2 flex-grow bg-gradient-to-r from-red-600/50 to-transparent skew-x-[20deg]"></div>
+            </div>
+            <p class="text-center text-gray-400 font-tech text-sm mb-12 uppercase tracking-[0.3em]">Vota por la mejor Skin de la semana</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-gray-900 h-80 tactical-border flex flex-col items-center justify-center border border-white/5 relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-40"></div>
+                    <h4 class="text-white font-military text-3xl mb-6 relative z-10 drop-shadow-2xl">GHOST AZRAEL</h4>
+                    <button onclick="voteSkin('GHOST AZRAEL')" class="relative z-10 px-10 py-3 bg-red-600 text-white font-military uppercase cursor-pointer active:scale-90 transition-all shadow-lg shadow-red-600/30">VOTAR SKIN</button>
+                </div>
+                <div class="bg-gray-900 h-80 tactical-border flex flex-col items-center justify-center border border-white/5 relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-40"></div>
+                    <h4 class="text-white font-military text-3xl mb-6 relative z-10 drop-shadow-2xl">URBAN TRACKER</h4>
+                    <button onclick="voteSkin('URBAN TRACKER')" class="relative z-10 px-10 py-3 bg-red-600 text-white font-military uppercase cursor-pointer active:scale-90 transition-all shadow-lg shadow-red-600/30">VOTAR SKIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === FOOTER REDES SOCIALES === -->
+    <footer class="bg-[#020202] pt-20 pb-32 border-t border-white/5 text-center relative z-20 overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h3 class="text-2xl font-military text-white uppercase mb-10 tracking-[0.2em]"><span class="text-cod-gold">RED</span> DE INTELIGENCIA</h3>
+            <div class="flex flex-wrap justify-center gap-5 md:gap-8 mb-16">
+                <!-- TikTok -->
+                <button onclick="confirmSocial('TikTok', 'https://www.tiktok.com/@t.codmobilevzla', 'text-white')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-white transition-all"><svg class="w-7 h-7 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg></button>
+                <!-- Instagram -->
+                <button onclick="confirmSocial('Instagram', 'https://www.instagram.com/t.codmobilevzla', 'text-cod-gold')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-cod-gold transition-all"><svg class="w-7 h-7 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></button>
+                <!-- WhatsApp con Icono de Teléfono -->
+                <button onclick="confirmSocial('WhatsApp', 'https://chat.whatsapp.com/L4HFAsChC369te6VIBn5Jh', 'text-green-500')" class="w-16 h-16 bg-black border border-white/10 flex items-center justify-center tactical-border cursor-pointer active:border-green-500 transition-all"><svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button>
+            </div>
+            <p class="text-[10px] text-gray-700 font-tech uppercase tracking-[0.5em] opacity-50">© 2024 T.CODmobileVZLA. OPERACIONES TÁCTICAS.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL COMPRA CP -->
+    <div id="purchaseModal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closePurchaseModal()"></div>
+        <div class="relative w-full max-w-md bg-cod-panel border border-cod-gold/30 p-8 tactical-border-inv shadow-[0_0_50px_rgba(255,215,0,0.1)]">
+            <h3 class="text-xl font-military text-white text-center mb-6 uppercase tracking-widest">SOLICITUD: <br><span id="modalPackageName" class="text-cod-gold">--</span></h3>
+            <form id="salesForm" name="ventas-cp" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="ventas-cp">
+                <input type="hidden" name="paquete" id="selectedPackageInput">
+                <input type="tel" name="telefono" required placeholder="Tu WhatsApp: +58..." class="w-full input-tactical py-5 px-6 text-white text-center mb-6 text-xl font-tech">
+                <button type="submit" class="w-full bg-cod-gold text-black font-bold font-military py-5 uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-yellow-600/20 cursor-pointer">ENVIAR PEDIDO</button>
+            </form>
+            <div id="salesSuccess" class="hidden text-center text-green-500 font-military py-4 animate-pulse uppercase tracking-widest text-lg">¡Solicitud Enviada!</div>
+        </div>
+    </div>
+
+    <!-- MODAL REDES SOCIALES -->
+    <div id="socialModal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeSocialModal()"></div>
+        <div class="relative w-full max-w-sm bg-[#111] p-10 tactical-border border border-white/10 text-center">
+            <h3 class="text-white font-military text-xl mb-3 tracking-widest uppercase opacity-50">Estableciendo Enlace</h3>
+            <p id="socialName" class="text-3xl font-military mb-10 uppercase tracking-[0.2em] text-glow-white">--</p>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="closeSocialModal()" class="py-4 border border-gray-800 text-gray-500 font-tech uppercase tracking-widest cursor-pointer hover:bg-white/5 transition-all">CANCELAR</button>
+                <button id="socialConfirmBtn" class="py-4 bg-white text-black font-bold font-military uppercase tracking-widest cursor-pointer active:scale-95 transition-all">ABRIR ></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[150] bg-cod-panel border border-cod-gold text-white px-10 py-5 font-military opacity-0 translate-y-10 transition-all duration-300 pointer-events-none shadow-[0_0_40px_rgba(255,215,0,0.3)] uppercase tracking-[0.2em]">CÓDIGO COPIADO</div>
+
+    <!-- SCRIPTS DE FUNCIONALIDAD -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('tacticalMenu');
+            const l1 = document.getElementById('line1'), l2 = document.getElementById('line2'), l3 = document.getElementById('line3');
+            menu.classList.toggle('translate-x-full');
+            if (menu.classList.contains('translate-x-full')) {
+                l1.className = "w-6 h-0.5 bg-white transition-all"; l2.className = "w-6 h-0.5 bg-white transition-all"; l3.className = "w-4 h-0.5 bg-cod-gold transition-all self-end mr-3";
+            } else {
+                l1.className = "w-6 h-0.5 bg-white rotate-45 translate-y-2 transition-all"; l2.className = "opacity-0"; l3.className = "w-6 h-0.5 bg-white -rotate-45 -translate-y-2 transition-all";
+            }
+        }
+
+        function changeView(view) {
+            const views = { home: document.getElementById('view-home'), databank: document.getElementById('view-databank'), hall: document.getElementById('view-hall') };
+            Object.values(views).forEach(v => v.classList.add('hidden'));
+            if(views[view]) views[view].classList.remove('hidden');
+            window.scrollTo(0,0);
+            if(!document.getElementById('tacticalMenu').classList.contains('translate-x-full')) toggleMenu();
+        }
+
+        function switchTab(tab) {
+            const sh = document.getElementById('content-shotguns'), hu = document.getElementById('content-huds');
+            const bS = document.getElementById('tab-shotguns'), bH = document.getElementById('tab-huds');
+            if(tab === 'shotguns') {
+                sh.classList.remove('hidden'); sh.classList.add('grid'); hu.classList.add('hidden'); hu.classList.remove('grid');
+                bS.className = "flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest bg-cod-orange text-black tactical-border cursor-pointer";
+                bH.className = "flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer";
+            } else {
+                hu.classList.remove('hidden'); hu.classList.add('grid'); sh.classList.add('hidden'); sh.classList.remove('grid');
+                bH.className = "flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest bg-cod-gold text-black tactical-border cursor-pointer";
+                bS.className = "flex-1 md:flex-none px-8 py-4 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer";
+            }
+        }
+
+        function copyCode(c) {
+            navigator.clipboard.writeText(c).then(() => {
+                const t = document.getElementById('toast');
+                t.classList.remove('opacity-0', 'translate-y-10');
+                setTimeout(() => t.classList.add('opacity-0', 'translate-y-10'), 2500);
+            });
+        }
+
+        const mP = document.getElementById('purchaseModal');
+        function openPurchaseModal(p) {
+            document.getElementById('modalPackageName').textContent = p;
+            document.getElementById('selectedPackageInput').value = p;
+            mP.classList.remove('pointer-events-none', 'opacity-0');
+            document.getElementById('salesForm').style.display = 'block';
+            document.getElementById('salesSuccess').classList.add('hidden');
+        }
+        function closePurchaseModal() { mP.classList.add('pointer-events-none', 'opacity-0'); }
+
+        let curSoc = '';
+        function confirmSocial(n, u, c) {
+            curSoc = u; document.getElementById('socialName').textContent = n;
+            document.getElementById('socialName').className = "text-3xl font-military mb-10 uppercase tracking-[0.2em] " + c;
+            document.getElementById('socialModal').classList.remove('pointer-events-none', 'opacity-0');
+        }
+        function closeSocialModal() { document.getElementById('socialModal').classList.add('pointer-events-none', 'opacity-0'); }
+        document.getElementById('socialConfirmBtn').onclick = () => { window.open(curSoc, '_blank'); closeSocialModal(); };
+
+        function voteSkin(s) {
+            const msg = `Voto Hall de Fama: ${s}`;
+            const url = `https://wa.me/584129562946?text=${encodeURIComponent(msg)}`;
+            confirmSocial('VOTAR SKIN', url, 'text-red-600');
+        }
+
+        // Lógica de envío del Formulario de Ventas
+        document.getElementById('salesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerHTML = 'ENVIANDO...'; 
+            btn.disabled = true;
+            
+            fetch("/", { 
+                method: "POST", 
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+                body: new URLSearchParams(new FormData(this)).toString() 
+            })
+            .then(() => {
+                this.style.display = 'none'; 
+                document.getElementById('salesSuccess').classList.remove('hidden');
+                setTimeout(closePurchaseModal, 3000);
+            });
+        });
+
+        // Lógica de visualización de nombre de archivo cargado
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const display = document.getElementById('fileNameDisplay');
+            if (this.files && this.files[0]) {
+                display.textContent = "ARCHIVO: " + this.files[0].name;
+                display.style.opacity = "1";
+            } else {
+                display.style.opacity = "0";
+            }
+        });
+    </script>
+</body>
+</html>
+                         
+        
