@@ -115,66 +115,70 @@
             </div>
 
             <!-- ============================================= -->
-            <!-- 1. SECCIÓN: CP STORE (DISEÑO TÁCTICO)         -->
+            <!-- 1. SECCIÓN: CP STORE (VISUALES RESTAURADOS)   -->
             <!-- ============================================= -->
             <section class="mb-24 relative z-10" id="store-section">
                 <div class="max-w-5xl mx-auto">
-                    <div class="flex items-center justify-center gap-4 mb-10 text-center px-2">
+                    
+                    <!-- Título con Barras y Brillo Dorado -->
+                    <div class="flex items-center justify-center gap-4 mb-12 mt-4 px-2">
                         <div class="hidden md:block h-2 flex-grow bg-gradient-to-l from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
-                        <h2 class="text-4xl md:text-6xl font-military text-white uppercase tracking-wider text-glow-gold">
+                        <h2 class="text-5xl md:text-6xl font-military text-white uppercase tracking-wider text-center drop-shadow-[0_0_15px_rgba(229,193,0,0.5)]">
                             <span class="text-cod-gold">CP</span> STORE
                         </h2>
                         <div class="hidden md:block h-2 flex-grow bg-gradient-to-r from-cod-gold/50 to-transparent skew-x-[20deg]"></div>
                     </div>
 
+                    <!-- Grid de Paquetes -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                        <!-- PAQUETE 80 CP -->
-                        <button onclick="openPurchaseModal('80 CP (850 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95">
-                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">80 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                        
+                        <!-- 80 CP -->
+                        <button onclick="openPurchaseModal('80 CP (850 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95 hover:shadow-cod-gold/20">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-md">80 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">850 Bs.</span>
                         </button>
 
-                        <!-- PAQUETE 420 CP -->
-                        <button onclick="openPurchaseModal('420 CP (3,900 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95">
-                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">420 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                        <!-- 420 CP -->
+                        <button onclick="openPurchaseModal('420 CP (3,900 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95 hover:shadow-cod-gold/20">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-md">420 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">3,900 Bs.</span>
                         </button>
 
-                        <!-- PAQUETE 880 CP -->
-                        <button onclick="openPurchaseModal('880 CP (7,400 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative active:scale-95">
-                            <div class="absolute top-0 right-0 bg-cod-gold text-black text-[10px] font-bold px-2 py-0.5 font-tech">POPULAR</div>
-                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">880 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                        <!-- 880 CP (Popular) -->
+                        <button onclick="openPurchaseModal('880 CP (7,400 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative shadow-lg active:scale-95 hover:shadow-cod-gold/20">
+                            <div class="absolute top-0 right-0 bg-cod-gold text-black text-[10px] font-black px-2 py-0.5 font-tech tracking-wider">POPULAR</div>
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-md">880 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">7,400 Bs.</span>
                         </button>
 
-                        <!-- PAQUETE 2400 CP -->
-                        <button onclick="openPurchaseModal('2,400 CP (16,800 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer active:scale-95">
-                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">2,400 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                        <!-- 2,400 CP -->
+                        <button onclick="openPurchaseModal('2,400 CP (16,800 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95 hover:shadow-cod-gold/20">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-md">2,400 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">16,800 Bs.</span>
                         </button>
 
-                        <!-- PAQUETE 5000 CP -->
-                        <button onclick="openPurchaseModal('5,000 CP (33,880 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer active:scale-95">
-                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-white">5,000 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
+                        <!-- 5,000 CP -->
+                        <button onclick="openPurchaseModal('5,000 CP (33,880 Bs)')" class="w-full group bg-[#0a0a0a] border border-white/10 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer shadow-lg active:scale-95 hover:shadow-cod-gold/20">
+                            <span class="text-4xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-md">5,000 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-gray-700 my-3 group-hover:bg-cod-gold transition-colors"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">33,880 Bs.</span>
                         </button>
 
-                        <!-- PAQUETE 10800 CP -->
-                        <button onclick="openPurchaseModal('10,800 CP (67,600 Bs)')" class="w-full group bg-[#0a0a0a] border border-cod-gold/30 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative shadow-[0_0_20px_rgba(229,193,0,0.15)] active:scale-95">
-                            <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 animate-pulse font-tech tracking-tighter">MÁXIMO</div>
-                            <span class="text-3xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform text-glow-gold">10,800 <span class="text-sm align-top text-gray-500">CP</span></span>
-                            <div class="h-px w-10 bg-cod-gold my-3"></div>
+                        <!-- 10,800 CP (Máximo) -->
+                        <button onclick="openPurchaseModal('10,800 CP (67,600 Bs)')" class="w-full group bg-[#0a0a0a] border border-cod-gold/40 hover:border-cod-gold transition-all duration-300 p-6 flex flex-col items-center justify-center tactical-border overflow-hidden cursor-pointer relative shadow-[0_0_15px_rgba(229,193,0,0.1)] active:scale-95 hover:shadow-cod-gold/30">
+                            <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-black px-2 py-0.5 animate-pulse font-tech tracking-wider">MÁXIMO</div>
+                            <span class="text-3xl md:text-5xl font-military text-white group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">10,800 <span class="text-sm align-top text-gray-500 font-tech">CP</span></span>
+                            <div class="h-px w-12 bg-cod-gold my-3"></div>
                             <span class="text-xl font-tech font-bold text-cod-gold tracking-widest">67,600 Bs.</span>
                         </button>
+                        
                     </div>
                 </div>
             </section>
-
             <!-- ============================================= -->
             <!-- 2. SECCIÓN: LIGA MENSUAL (PODIO VISUAL)       -->
             <!-- ============================================= -->
