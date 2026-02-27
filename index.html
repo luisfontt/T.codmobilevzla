@@ -547,16 +547,33 @@
             });
         }
 
+        // --- LÓGICA DE COMPRA DE CP (WHATSAPP) ---
         const mP = document.getElementById('purchaseModal');
-        function openPurchaseModal(p) {
-            document.getElementById('modalPackageName').textContent = p;
-            document.getElementById('selectedPackageInput').value = p;
-            mP.classList.remove('pointer-events-none', 'opacity-0');
-            document.getElementById('salesForm').style.display = 'block';
-            document.getElementById('salesSuccess').classList.add('hidden');
-        }
-        function closePurchaseModal() { mP.classList.add('pointer-events-none', 'opacity-0'); }
+        let currentPackageToBuy = '';
 
+        function openPurchaseModal(paquete) {
+            currentPackageToBuy = paquete;
+            document.getElementById('modalPackageName').textContent = paquete;
+            mP.classList.remove('pointer-events-none', 'opacity-0');
+        }
+
+        function closePurchaseModal() { 
+            mP.classList.add('pointer-events-none', 'opacity-0'); 
+        }
+
+        // Al darle al botón "ENVIAR" en el modal de compra
+        document.getElementById('btnConfirmPurchase').addEventListener('click', function() {
+            // El mensaje automático con el paquete seleccionado
+            const mensaje = `Hola Comandante, quiero comprar el paquete de ${currentPackageToBuy}`;
+            // Tu número de teléfono
+            const telefonoAdmin = "584129562946";
+            // Crear el enlace de WhatsApp
+            const linkWa = `https://wa.me/${telefonoAdmin}?text=${encodeURIComponent(mensaje)}`;
+            
+            // Abrir WhatsApp y cerrar el modal
+            window.open(linkWa, '_blank');
+            closePurchaseModal();
+        });
         let curSoc = '';
         function confirmSocial(n, u, c) {
             curSoc = u; document.getElementById('socialName').textContent = n;
