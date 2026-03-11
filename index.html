@@ -342,225 +342,87 @@
             </section>
         </main>
     </div> <!-- FIN DE VIEW-HOME (INICIO) -->
-  <!-- ============================================================== -->
-    <!-- VISTA OCULTA 1: BANCO DE DATOS (HUDS DE LA COMUNIDAD)          -->
+    <!-- ============================================================== -->
+    <!-- VISTA OCULTA 1: BANCO DE DATOS (ARSENAL & HUD)                -->
     <!-- ============================================================== -->
     <div id="view-databank" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
         <div class="max-w-5xl mx-auto px-4">
             
             <!-- Botón Volver -->
-            <button onclick="changeView('home')" class="mb-8 text-cod-orange font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
+            <button onclick="changeView('home')" class="mb-10 text-cod-orange font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
                 <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
             </button>
 
-            <!-- Título Principal -->
-            <div class="flex items-center gap-4 mb-6">
+            <!-- Título -->
+            <div class="flex items-center gap-4 mb-12">
                 <div class="h-2 flex-grow bg-gradient-to-l from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
                 <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center">BANCO DE <span class="text-cod-orange">DATOS</span></h2>
                 <div class="h-2 flex-grow bg-gradient-to-r from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
             </div>
 
-            <!-- Banner Publicitario para TikTok -->
-            <div class="bg-cod-orange/10 border border-cod-orange/30 p-4 md:p-6 mb-12 text-center tactical-border">
-                <h3 class="text-cod-orange font-military tracking-widest text-lg md:text-xl uppercase mb-2">¿Quieres que tu HUD aparezca aquí?</h3>
-                <p class="text-gray-300 font-tech text-sm md:text-base tracking-wider uppercase">
-                    Requisito: Leyenda x5. <br class="md:hidden">¡Envía tu HUD por privado en nuestro TikTok para ser agregado!
-                </p>
-            </div>
-
-            <!-- ================= SECCIÓN: HUDS BATTLE ROYALE ================= -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-military text-white uppercase tracking-widest mb-6 border-l-4 border-cod-orange pl-3">HUDs BATTLE ROYALE (BR)</h3>
+            <!-- ESTRUCTURA UNIFICADA: BR Y MJ -->
+            <div id="content-databank-inner" class="space-y-16">
                 
-                <!-- Botones Móvil / Pad -->
-                <div class="flex gap-2 mb-8 max-w-sm">
-                    <button onclick="switchHudTab('br', 'mobile')" id="btn-br-mobile" class="flex-1 px-6 py-3 font-military uppercase tracking-widest bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all">MOBILE</button>
-                    <button onclick="switchHudTab('br', 'pad')" id="btn-br-pad" class="flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white">PAD</button>
-                </div>
-
-                <!-- BR MOBILE GRID -->
-                <div id="content-br-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Tarjeta HUD (Ejemplo Ocupado) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-                            <span class="text-xl text-white/20 font-military px-4 text-center">FOTO DEL HUD AQUÍ</span>
+                <!-- SECCIÓN BR -->
+                <div>
+                    <h3 class="text-2xl font-military text-white mb-6 border-l-4 border-cod-orange pl-4 uppercase">Battle Royale (BR)</h3>
+                    <div class="flex gap-2 mb-8">
+                        <button onclick="switchHudTab('br', 'mobile')" id="btn-br-mobile" class="flex-1 py-3 font-military bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)]">MOBILE</button>
+                        <button onclick="switchHudTab('br', 'pad')" id="btn-br-pad" class="flex-1 py-3 font-military text-gray-500 border border-gray-700 tactical-border cursor-pointer">PAD</button>
+                    </div>
+                    <!-- CONTENEDORES BR -->
+                    <div id="content-br-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Aquí va la tarjeta de jugador (Mobile) -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
+                            <div class="h-40 bg-gray-900 mb-4 flex items-center justify-center border border-white/5">FOTO DEL HUD</div>
+                            <h4 class="text-xl font-military text-white mb-1 uppercase">POCO X3 PRO - 4 DEDOS</h4>
+                            <p class="text-cod-orange font-tech text-sm mb-2 font-bold tracking-widest">@t.codmobilevzla</p>
+                            <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Optimizado para rusheo full.</p>
+                            <button onclick="copyCode('COD-BR-MOBILE-1')" class="w-full py-3 bg-white/5 border border-white/10 text-white font-tech uppercase cursor-pointer hover:bg-cod-orange hover:text-black">COPIAR CÓDIGO</button>
                         </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">POCO X3 PRO - 4 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@t.codmobilevzla" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @t.codmobilevzla
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Optimizado para rusheo full y escopetas.</p>
-                        <button onclick="copyCode('CODIGO-BR-MOBILE')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
+                    </div>
+                    <div id="content-br-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Aquí va la tarjeta de jugador (Pad) -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
+                            <div class="h-40 bg-gray-900 mb-4 flex items-center justify-center border border-white/5">FOTO DEL HUD</div>
+                            <h4 class="text-xl font-military text-white mb-1 uppercase">IPAD PRO - 4 DEDOS</h4>
+                            <p class="text-cod-orange font-tech text-sm mb-2 font-bold tracking-widest">@t.codmobilevzla</p>
+                            <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Optimizado para escopeteros.</p>
+                            <button onclick="copyCode('COD-BR-PAD-1')" class="w-full py-3 bg-white/5 border border-white/10 text-white font-tech uppercase cursor-pointer hover:bg-cod-orange hover:text-black">COPIAR CÓDIGO</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- BR PAD GRID (Oculto por defecto) -->
-                <div id="content-br-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Espacio Vacío Intencional (Gancho) -->
-                    <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[300px]">
-                        <span class="text-5xl text-gray-700 font-military mb-4">?</span>
-                        <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">ESPACIO DISPONIBLE</h4>
-                        <p class="text-gray-600 font-tech text-sm uppercase tracking-widest">Envía tu HUD de PAD a nuestro TikTok para ocupar este lugar.</p>
+                <!-- SECCIÓN MJ -->
+                <div>
+                    <h3 class="text-2xl font-military text-white mb-6 border-l-4 border-cod-gold pl-4 uppercase">Multijugador (MJ)</h3>
+                    <div class="flex gap-2 mb-8">
+                        <button onclick="switchHudTab('mj', 'mobile')" id="btn-mj-mobile" class="flex-1 py-3 font-military bg-cod-gold text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(229,193,0,0.2)]">MOBILE</button>
+                        <button onclick="switchHudTab('mj', 'pad')" id="btn-mj-pad" class="flex-1 py-3 font-military text-gray-500 border border-gray-700 tactical-border cursor-pointer">PAD</button>
+                    </div>
+                    <!-- CONTENEDORES MJ -->
+                    <div id="content-mj-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
+                            <div class="h-40 bg-gray-900 mb-4 flex items-center justify-center border border-white/5">FOTO DEL HUD</div>
+                            <h4 class="text-xl font-military text-white mb-1 uppercase">IPHONE 13 - 4 DEDOS</h4>
+                            <p class="text-cod-gold font-tech text-sm mb-2 font-bold tracking-widest">@TiradorMobile</p>
+                            <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Para rotación rápida.</p>
+                            <button onclick="copyCode('COD-MJ-MOBILE-1')" class="w-full py-3 bg-white/5 border border-white/10 text-white font-tech uppercase cursor-pointer hover:bg-cod-gold hover:text-black">COPIAR CÓDIGO</button>
+                        </div>
+                    </div>
+                    <div id="content-mj-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
+                            <div class="h-40 bg-gray-900 mb-4 flex items-center justify-center border border-white/5">FOTO DEL HUD</div>
+                            <h4 class="text-xl font-military text-white mb-1 uppercase">IPAD PRO - 5 DEDOS</h4>
+                            <p class="text-cod-gold font-tech text-sm mb-2 font-bold tracking-widest">@UnSniperPro</p>
+                            <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Para Sniper y Hardpoint.</p>
+                            <button onclick="copyCode('COD-MJ-PAD-1')" class="w-full py-3 bg-white/5 border border-white/10 text-white font-tech uppercase cursor-pointer hover:bg-cod-gold hover:text-black">COPIAR CÓDIGO</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- ================= SECCIÓN: HUDS MULTIJUGADOR ================= -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-military text-white uppercase tracking-widest mb-6 border-l-4 border-cod-gold pl-3">HUDs MULTIJUGADOR (MJ)</h3>
-                
-                <!-- Botones Móvil / Pad -->
-                <div class="flex gap-2 mb-8 max-w-sm">
-                    <button onclick="switchHudTab('mj', 'mobile')" id="btn-mj-mobile" class="flex-1 px-6 py-3 font-military uppercase tracking-widest bg-cod-gold text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(229,193,0,0.2)] transition-all">MOBILE</button>
-                    <button onclick="switchHudTab('mj', 'pad')" id="btn-mj-pad" class="flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white">PAD</button>
-<!-- ============================================================== -->
-    <!-- VISTA OCULTA 1: BANCO DE DATOS (HUDS DE LA COMUNIDAD)          -->
-    <!-- ============================================================== -->
-    <div id="view-databank" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
-        <div class="max-w-5xl mx-auto px-4">
-            
-            <!-- Botón Volver -->
-            <button onclick="changeView('home')" class="mb-8 text-cod-orange font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
-                <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
-            </button>
-
-            <!-- Título Principal -->
-            <div class="flex items-center gap-4 mb-6">
-                <div class="h-2 flex-grow bg-gradient-to-l from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
-                <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center">BANCO DE <span class="text-cod-orange">DATOS</span></h2>
-                <div class="h-2 flex-grow bg-gradient-to-r from-cod-orange/50 to-transparent skew-x-[20deg]"></div>
-            </div>
-
-            <!-- Banner Publicitario para TikTok -->
-            <div class="bg-cod-orange/10 border border-cod-orange/30 p-4 md:p-6 mb-12 text-center tactical-border">
-                <h3 class="text-cod-orange font-military tracking-widest text-lg md:text-xl uppercase mb-2">¿Quieres que tu HUD aparezca aquí?</h3>
-                <p class="text-gray-300 font-tech text-sm md:text-base tracking-wider uppercase">
-                    Requisito: Leyenda x5. <br class="md:hidden">¡Envía tu HUD por privado en nuestro TikTok para ser agregado!
-                </p>
-            </div>
-
-            <!-- ================= SECCIÓN: HUDS BATTLE ROYALE ================= -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-military text-white uppercase tracking-widest mb-6 border-l-4 border-cod-orange pl-3">HUDs BATTLE ROYALE (BR)</h3>
-                
-                <!-- Botones Móvil / Pad -->
-                <div class="flex gap-2 mb-8 max-w-sm">
-                    <button onclick="switchHudTab('br', 'mobile')" id="btn-br-mobile" class="flex-1 px-6 py-3 font-military uppercase tracking-widest bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all">MOBILE</button>
-                    <button onclick="switchHudTab('br', 'pad')" id="btn-br-pad" class="flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white">PAD</button>
-                </div>
-
-                <!-- BR MOBILE GRID -->
-                <div id="content-br-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Tarjeta HUD (BR MOBILE) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-                            <span class="text-2xl text-white/10 font-military px-4 text-center">FOTO DEL HUD AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">POCO X3 PRO - 4 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@t.codmobilevzla" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @t.codmobilevzla
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Optimizado para rusheo full y escopetas.</p>
-                        <button onclick="copyCode('CODIGO-BR-MOBILE-AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
-                    </div>
-
-                    <!-- Espacio Vacío Intencional (Gancho BR MOBILE) -->
-                    <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[350px]">
-                        <span class="text-5xl text-gray-700 font-military mb-4">?</span>
-                        <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">ESPACIO DISPONIBLE</h4>
-                        <p class="text-gray-600 font-tech text-sm uppercase tracking-widest">Envía tu HUD de MOBILE a nuestro TikTok para ocupar este lugar.</p>
-                    </div>
-                </div>
-
-                <!-- BR PAD GRID (Oculto por defecto) -->
-                <div id="content-br-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Tarjeta HUD (BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-                            <span class="text-2xl text-white/10 font-military px-4 text-center">FOTO DEL HUD AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">IPAD PRO - 4 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@t.codmobilevzla" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @JugadorProBR
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Visión amplia y control de retroceso perfecto.</p>
-                        <button onclick="copyCode('CODIGO-BR-PAD-AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
-                    </div>
-
-                    <!-- Espacio Vacío Intencional (Gancho BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[350px]">
-                        <span class="text-5xl text-gray-700 font-military mb-4">?</span>
-                        <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">ESPACIO DISPONIBLE</h4>
-                        <p class="text-gray-600 font-tech text-sm uppercase tracking-widest">Envía tu HUD de PAD a nuestro TikTok para ocupar este lugar.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= SECCIÓN: HUDS MULTIJUGADOR ================= -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-military text-white uppercase tracking-widest mb-6 border-l-4 border-cod-gold pl-3">HUDs MULTIJUGADOR (MJ)</h3>
-                
-                <!-- Botones Móvil / Pad -->
-                <div class="flex gap-2 mb-8 max-w-sm">
-                    <button onclick="switchHudTab('mj', 'mobile')" id="btn-mj-mobile" class="flex-1 px-6 py-3 font-military uppercase tracking-widest bg-cod-gold text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(229,193,0,0.2)] transition-all">MOBILE</button>
-                    <button onclick="switchHudTab('mj', 'pad')" id="btn-mj-pad" class="flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white">PAD</button>
-                </div>
-
-                <!-- MJ MOBILE GRID -->
-                <div id="content-mj-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Tarjeta HUD (MJ MOBILE) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-                            <span class="text-2xl text-white/10 font-military px-4 text-center">FOTO DEL HUD AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">IPHONE 13 - 4 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@t.codmobilevzla" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @TiradorMobile
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Ideal para rotación rápida y subfusiles.</p>
-                        <button onclick="copyCode('CODIGO-MJ-MOBILE-AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
-                    </div>
-
-                    <!-- Espacio Vacío Intencional -->
-                    <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[350px]">
-                        <span class="text-5xl text-gray-700 font-military mb-4">?</span>
-                        <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">ESPACIO DISPONIBLE</h4>
-                        <p class="text-gray-600 font-tech text-sm uppercase tracking-widest">Envía tu HUD de MOBILE a nuestro TikTok para ocupar este lugar.</p>
-                    </div>
-                </div>
-
-                <!-- MJ PAD GRID (Oculto por defecto) -->
-                <div id="content-mj-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                    <!-- Tarjeta HUD (MJ PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-                            <span class="text-2xl text-white/10 font-military px-4 text-center">FOTO DEL HUD AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">IPAD PRO 11" - 5 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@t.codmobilevzla" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @UnSniperPro
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Perfecto para Sniper y control de Hardpoint.</p>
-                        <button onclick="copyCode('CODIGO-MJ-PAD-AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
-                    </div>
-
-                    <!-- Espacio Vacío Intencional -->
-                    <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[350px]">
-                        <span class="text-5xl text-gray-700 font-military mb-4">?</span>
-                        <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">ESPACIO DISPONIBLE</h4>
-                        <p class="text-gray-600 font-tech text-sm uppercase tracking-widest">Envía tu HUD de PAD a nuestro TikTok para ocupar este lugar.</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-
     <!-- ============================================================== -->
     <!-- VISTA OCULTA 2: HALL DE LA FAMA (VOTACIONES)                  -->
     <!-- ============================================================== -->
