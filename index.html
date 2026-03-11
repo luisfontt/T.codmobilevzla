@@ -440,31 +440,67 @@
     <!-- ============================================================== -->
     <div id="view-hall" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
         <div class="max-w-5xl mx-auto px-4">
+            
+            <!-- Botón Atrás -->
             <button onclick="changeView('home')" class="mb-10 text-red-600 font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
                 <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
             </button>
+            
+            <!-- Título -->
             <div class="flex items-center gap-4 mb-10">
                 <div class="h-2 flex-grow bg-gradient-to-l from-red-600/50 to-transparent skew-x-[20deg]"></div>
                 <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center">HALL DE LA <span class="text-red-600">FAMA</span></h2>
                 <div class="h-2 flex-grow bg-gradient-to-r from-red-600/50 to-transparent skew-x-[20deg]"></div>
             </div>
+            
             <p class="text-center text-gray-400 font-tech text-sm mb-12 uppercase tracking-[0.3em]">Vota por la mejor Skin de la semana</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-gray-900 h-80 tactical-border flex flex-col items-center justify-center border border-white/5 relative group overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-40"></div>
-                    <h4 class="text-white font-military text-3xl mb-6 relative z-10 drop-shadow-2xl">GHOST AZRAEL</h4>
-                    <button onclick="voteSkin('GHOST AZRAEL')" class="relative z-10 px-10 py-3 bg-red-600 text-white font-military uppercase cursor-pointer active:scale-90 transition-all shadow-lg shadow-red-600/30">VOTAR SKIN</button>
+            <!-- Grid de Votación -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- TARJETA DE SKIN 1 -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-red-600 transition-all flex flex-col">
+                    <!-- Foto de la Skin con Zoom -->
+                    <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-64 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer">
+                        <!-- AQUÍ PONES EL NOMBRE DE LA FOTO SUBIDA A GITHUB -->
+                        <img src="images/skin1.jpg" alt="Skin 1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-military text-xs tracking-widest bg-black/80 px-4 py-2 rounded">AMPLIAR IMAGEN</span>
+                        </div>
+                    </div>
+                    <!-- Info y Botón -->
+                    <div class="flex flex-col flex-grow text-center">
+                        <h4 class="text-white font-military text-2xl uppercase mb-1 drop-shadow-md">GHOST - AZRAEL</h4>
+                        <p class="text-red-500 font-tech text-sm mb-6 tracking-widest font-bold">@Usuario123</p>
+                        <button onclick="voteSkin('Ghost Azrael - @Usuario123')" class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-military uppercase tracking-widest cursor-pointer transition-all active:scale-95 mt-auto shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                            VOTAR POR ESTA SKIN
+                        </button>
+                    </div>
                 </div>
-                <div class="bg-gray-900 h-80 tactical-border flex flex-col items-center justify-center border border-white/5 relative group overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-40"></div>
-                    <h4 class="text-white font-military text-3xl mb-6 relative z-10 drop-shadow-2xl">URBAN TRACKER</h4>
-                    <button onclick="voteSkin('URBAN TRACKER')" class="relative z-10 px-10 py-3 bg-red-600 text-white font-military uppercase cursor-pointer active:scale-90 transition-all shadow-lg shadow-red-600/30">VOTAR SKIN</button>
+
+                <!-- TARJETA DE SKIN 2 -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-red-600 transition-all flex flex-col">
+                    <!-- Foto de la Skin con Zoom -->
+                    <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-64 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer">
+                        <!-- AQUÍ PONES EL NOMBRE DE LA FOTO SUBIDA A GITHUB -->
+                        <img src="images/skin2.jpg" alt="Skin 2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-military text-xs tracking-widest bg-black/80 px-4 py-2 rounded">AMPLIAR IMAGEN</span>
+                        </div>
+                    </div>
+                    <!-- Info y Botón -->
+                    <div class="flex flex-col flex-grow text-center">
+                        <h4 class="text-white font-military text-2xl uppercase mb-1 drop-shadow-md">URBAN TRACKER</h4>
+                        <p class="text-red-500 font-tech text-sm mb-6 tracking-widest font-bold">@Slayer99</p>
+                        <button onclick="voteSkin('Urban Tracker - @Slayer99')" class="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-military uppercase tracking-widest cursor-pointer transition-all active:scale-95 mt-auto shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                            VOTAR POR ESTA SKIN
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
-
     <!-- === FOOTER REPARADO: REDES, BRILLO Y TEXTO VISIBLE === -->
     <footer class="relative z-10 bg-[#020202] pt-16 pb-24 border-t border-white/10 overflow-hidden">
         
