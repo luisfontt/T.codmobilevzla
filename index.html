@@ -704,37 +704,36 @@
             if(!document.getElementById('tacticalMenu').classList.contains('translate-x-full')) toggleMenu();
         }
 
-        // --- NUEVO SISTEMA DE PESTAÑAS DE HUD (BR y MJ) ---
+        // --- SISTEMA DE PESTAÑAS DE HUD (BR y MJ) ---
         function switchHudTab(modo, dispositivo) {
-            // modo: 'br' o 'mj'
-            // dispositivo: 'mobile' o 'pad'
+            // El modo puede ser 'br' o 'mj'
+            // El dispositivo puede ser 'mobile' o 'pad'
             
-            const contentMobile = document.getElementById('content-' + modo + '-mobile');
-            const contentPad = document.getElementById('content-' + modo + '-pad');
-            const btnMobile = document.getElementById('btn-' + modo + '-mobile');
-            const btnPad = document.getElementById('btn-' + modo + '-pad');
+            // 1. Ocultamos todo primero
+            document.getElementById('content-br-mobile').classList.add('hidden');
+            document.getElementById('content-br-pad').classList.add('hidden');
+            document.getElementById('content-mj-mobile').classList.add('hidden');
+            document.getElementById('content-mj-pad').classList.add('hidden');
             
-            // Los colores varían según si es BR (Naranja) o MJ (Dorado)
+            // 2. Mostramos el seleccionado
+            const target = document.getElementById(`content-${modo}-${dispositivo}`);
+            target.classList.remove('hidden');
+            target.classList.add('grid');
+
+            // 3. Reseteamos colores de todos los botones de ese modo
+            const btnMobile = document.getElementById(`btn-${modo}-mobile`);
+            const btnPad = document.getElementById(`btn-${modo}-pad`);
+            
             const colorActivo = modo === 'br' ? 'cod-orange' : 'cod-gold';
-            const colorSombra = modo === 'br' ? 'rgba(255,140,0,0.2)' : 'rgba(229,193,0,0.2)';
-
-            // Clases base compartidas para los botones
-            const baseBtnActivo = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_${colorSombra}] transition-all`;
-            const baseBtnInactivo = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
-
+            
             if (dispositivo === 'mobile') {
-                contentMobile.classList.remove('hidden'); contentMobile.classList.add('grid');
-                contentPad.classList.add('hidden'); contentPad.classList.remove('grid');
-                btnMobile.className = baseBtnActivo;
-                btnPad.className = baseBtnInactivo;
+                btnMobile.className = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all`;
+                btnPad.className = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
             } else {
-                contentPad.classList.remove('hidden'); contentPad.classList.add('grid');
-                contentMobile.classList.add('hidden'); contentMobile.classList.remove('grid');
-                btnPad.className = baseBtnActivo;
-                btnMobile.className = baseBtnInactivo;
+                btnPad.className = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all`;
+                btnMobile.className = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
             }
         }
-
         function copyCode(c) {
             navigator.clipboard.writeText(c).then(() => {
                 const t = document.getElementById('toast');
