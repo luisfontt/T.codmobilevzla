@@ -604,6 +604,18 @@
         </div>
     </div>
 
+    <!-- === MODAL ZOOM DE IMAGEN === -->
+    <div id="imageModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/95 opacity-0 pointer-events-none transition-all duration-300">
+        <!-- Botón de Cerrar (X) -->
+        <button onclick="closeImageModal()" class="absolute top-5 right-5 text-white text-4xl font-bold p-4 hover:text-cod-orange z-[210] cursor-pointer">✕</button>
+        
+        <!-- Imagen Ampliada -->
+        <img id="modalImage" src="" class="max-h-[90vh] max-w-[95vw] object-contain border border-white/10 tactical-border shadow-[0_0_30px_rgba(0,0,0,0.8)] relative z-[205]">
+        
+        <!-- Fondo oscuro que también sirve para cerrar si tocas fuera de la foto -->
+        <div class="absolute inset-0 z-[200]" onclick="closeImageModal()"></div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[150] bg-cod-panel border border-cod-gold text-white px-10 py-5 font-military opacity-0 translate-y-10 transition-all duration-300 pointer-events-none shadow-[0_0_40px_rgba(255,215,0,0.3)] uppercase tracking-[0.2em]">CÓDIGO COPIADO</div>
 
@@ -737,6 +749,25 @@
                 display.style.opacity = "0";
             }
         });
+
+        // --- LÓGICA DE ZOOM DE IMÁGENES ---
+        function openImageModal(imgSrc) {
+            const imgModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            if(imgSrc && imgModal && modalImage) {
+                modalImage.src = imgSrc;
+                imgModal.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function closeImageModal() {
+            const imgModal = document.getElementById('imageModal');
+            if(imgModal) {
+                imgModal.classList.add('opacity-0', 'pointer-events-none');
+                // Limpiar la imagen después de la animación para que no se vea la anterior al abrir otra
+                setTimeout(() => { document.getElementById('modalImage').src = ""; }, 300); 
+            }
+        }
     </script>
 </body>
 </html>
