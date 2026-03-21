@@ -423,10 +423,17 @@
                     <!-- CONTENEDORES MJ -->
                     <div id="content-mj-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
-                            <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-    <!-- Aquí pones el link de tu imagen -->
-    <img src="images/Screenshot_20260311-165837.png" alt="HUD" class="w-full h-full object-cover">
-                            </div>
+                            <!-- NUEVA CAJA DE FOTO DE HUD CON ZOOM -->
+<div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+    
+    <!-- Asegúrate de poner el enlace correcto a tu imagen de GitHub aquí -->
+    <img src="images/TU_FOTO_DE_HUD.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
+    
+    <!-- El botoncito negro de AMPLIAR IMAGEN -->
+    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
+        <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+    </div>
+</div>
                             <h4 class="text-xl font-military text-white mb-1 uppercase">IPHONE 13 - 4 DEDOS</h4>
                             <p class="text-cod-gold font-tech text-sm mb-2 font-bold tracking-widest">@TiradorMobile</p>
                             <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Para rotación rápida.</p>
@@ -435,10 +442,17 @@
                     </div>
                     <div id="content-mj-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border flex flex-col">
-                            <div class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5">
-    <!-- Aquí pones el link de tu imagen -->
-    <img src="images/Screenshot_20260311-165837.png" alt="HUD" class="w-full h-full object-cover">
-                            </div>
+                            <!-- NUEVA CAJA DE FOTO DE HUD CON ZOOM -->
+<div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+    
+    <!-- Asegúrate de poner el enlace correcto a tu imagen de GitHub aquí -->
+    <img src="images/TU_FOTO_DE_HUD.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
+    
+    <!-- El botoncito negro de AMPLIAR IMAGEN -->
+    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
+        <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+    </div>
+</div>
                             <h4 class="text-xl font-military text-white mb-1 uppercase">IPAD PRO - 5 DEDOS</h4>
                             <p class="text-cod-gold font-tech text-sm mb-2 font-bold tracking-widest">@UnSniperPro</p>
                             <p class="text-gray-400 font-tech text-xs mb-6 flex-grow">Para Sniper y Hardpoint.</p>
