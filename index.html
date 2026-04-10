@@ -852,8 +852,9 @@
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[150] bg-cod-panel border border-cod-gold text-white px-10 py-5 font-military opacity-0 translate-y-10 transition-all duration-300 pointer-events-none shadow-[0_0_40px_rgba(255,215,0,0.3)] uppercase tracking-[0.2em]">CÓDIGO COPIADO</div>
 
-    <!-- SCRIPTS DE FUNCIONALIDAD -->
+     <!-- === SCRIPTS DE FUNCIONALIDAD (OPTIMIZADOS Y LIMPIOS) === -->
     <script>
+        // 1. NAVEGACIÓN Y MENÚ
         function toggleMenu() {
             const menu = document.getElementById('tacticalMenu');
             const l1 = document.getElementById('line1'), l2 = document.getElementById('line2'), l3 = document.getElementById('line3');
@@ -873,36 +874,31 @@
             if(!document.getElementById('tacticalMenu').classList.contains('translate-x-full')) toggleMenu();
         }
 
-        // --- SISTEMA DE PESTAÑAS DE HUD (BR y MJ) ---
+        // 2. SISTEMA DE PESTAÑAS Y COPIAR CÓDIGO (HUD)
         function switchHudTab(modo, dispositivo) {
-            // El modo puede ser 'br' o 'mj'
-            // El dispositivo puede ser 'mobile' o 'pad'
+            document.getElementById('content-' + modo + '-mobile').classList.add('hidden');
+            document.getElementById('content-' + modo + '-mobile').classList.remove('grid');
+            document.getElementById('content-' + modo + '-pad').classList.add('hidden');
+            document.getElementById('content-' + modo + '-pad').classList.remove('grid');
             
-            // 1. Ocultamos todo primero
-            document.getElementById('content-br-mobile').classList.add('hidden');
-            document.getElementById('content-br-pad').classList.add('hidden');
-            document.getElementById('content-mj-mobile').classList.add('hidden');
-            document.getElementById('content-mj-pad').classList.add('hidden');
-            
-            // 2. Mostramos el seleccionado
-            const target = document.getElementById(`content-${modo}-${dispositivo}`);
+            const target = document.getElementById('content-' + modo + '-' + dispositivo);
             target.classList.remove('hidden');
             target.classList.add('grid');
 
-            // 3. Reseteamos colores de todos los botones de ese modo
-            const btnMobile = document.getElementById(`btn-${modo}-mobile`);
-            const btnPad = document.getElementById(`btn-${modo}-pad`);
-            
+            const btnMobile = document.getElementById('btn-' + modo + '-mobile');
+            const btnPad = document.getElementById('btn-' + modo + '-pad');
             const colorActivo = modo === 'br' ? 'cod-orange' : 'cod-gold';
-            
+            const colorSombra = modo === 'br' ? 'rgba(255,140,0,0.2)' : 'rgba(229,193,0,0.2)';
+            const baseBtnActivo = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_${colorSombra}] transition-all`;
+            const baseBtnInactivo = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
+
             if (dispositivo === 'mobile') {
-                btnMobile.className = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all`;
-                btnPad.className = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
+                btnMobile.className = baseBtnActivo; btnPad.className = baseBtnInactivo;
             } else {
-                btnPad.className = `flex-1 px-6 py-3 font-military uppercase tracking-widest bg-${colorActivo} text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all`;
-                btnMobile.className = "flex-1 px-6 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white";
+                btnPad.className = baseBtnActivo; btnMobile.className = baseBtnInactivo;
             }
         }
+
         function copyCode(c) {
             navigator.clipboard.writeText(c).then(() => {
                 const t = document.getElementById('toast');
@@ -911,79 +907,7 @@
             });
         }
 
-        // --- LÓGICA DE COMPRA DE CP (WHATSAPP) ---
-        const mP = document.getElementById('purchaseModal');
-        let currentPackageToBuy = '';
-
-        function openPurchaseModal(paquete) {
-            currentPackageToBuy = paquete;
-            document.getElementById('modalPackageName').textContent = paquete;
-            mP.classList.remove('pointer-events-none', 'opacity-0');
-        }
-
-        function closePurchaseModal() { 
-            mP.classList.add('pointer-events-none', 'opacity-0'); 
-        }
-
-        // Al darle al botón "ENVIAR" en el modal de compra
-        document.getElementById('btnConfirmPurchase').addEventListener('click', function() {
-            // El mensaje automático con el paquete seleccionado
-            const mensaje = `Hola Comandante, quiero comprar el paquete de ${currentPackageToBuy}`;
-            // Tu número de teléfono
-            const telefonoAdmin = "584129562946";
-            // Crear el enlace de WhatsApp
-            const linkWa = `https://wa.me/${telefonoAdmin}?text=${encodeURIComponent(mensaje)}`;
-            
-            // Abrir WhatsApp y cerrar el modal
-            window.open(linkWa, '_blank');
-            closePurchaseModal();
-        });
-        let curSoc = '';
-        function confirmSocial(n, u, c) {
-            curSoc = u; document.getElementById('socialName').textContent = n;
-            document.getElementById('socialName').className = "text-3xl font-military mb-10 uppercase tracking-[0.2em] " + c;
-            document.getElementById('socialModal').classList.remove('pointer-events-none', 'opacity-0');
-        }
-        function closeSocialModal() { document.getElementById('socialModal').classList.add('pointer-events-none', 'opacity-0'); }
-        document.getElementById('socialConfirmBtn').onclick = () => { window.open(curSoc, '_blank'); closeSocialModal(); };
-
-        function voteSkin(s) {
-            const msg = `Voto Hall de Fama: ${s}`;
-            const url = `https://wa.me/584129562946?text=${encodeURIComponent(msg)}`;
-            confirmSocial('VOTAR SKIN', url, 'text-red-600');
-        }
-
-        // Lógica de envío del Formulario de Ventas
-        document.getElementById('salesForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button');
-            btn.innerHTML = 'ENVIANDO...'; 
-            btn.disabled = true;
-            
-            fetch("/", { 
-                method: "POST", 
-                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
-                body: new URLSearchParams(new FormData(this)).toString() 
-            })
-            .then(() => {
-                this.style.display = 'none'; 
-                document.getElementById('salesSuccess').classList.remove('hidden');
-                setTimeout(closePurchaseModal, 3000);
-            });
-        });
-
-        // Lógica de visualización de nombre de archivo cargado
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            const display = document.getElementById('fileNameDisplay');
-            if (this.files && this.files[0]) {
-                display.textContent = "ARCHIVO: " + this.files[0].name;
-                display.style.opacity = "1";
-            } else {
-                display.style.opacity = "0";
-            }
-        });
-
-        // --- LÓGICA DE ZOOM DE IMÁGENES ---
+        // 3. LÓGICA DE ZOOM DE IMÁGENES (SOLUCIONADO)
         function openImageModal(imgSrc) {
             const imgModal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -997,12 +921,79 @@
             const imgModal = document.getElementById('imageModal');
             if(imgModal) {
                 imgModal.classList.add('opacity-0', 'pointer-events-none');
-                // Limpiar la imagen después de la animación para que no se vea la anterior al abrir otra
                 setTimeout(() => { document.getElementById('modalImage').src = ""; }, 300); 
             }
         }
+
+        // 4. SISTEMA DE COMPRA DE CP (DIRECTO A WHATSAPP)
+        const mP = document.getElementById('purchaseModal');
+        let currentPackageToBuy = '';
+
+        function openPurchaseModal(paquete) {
+            currentPackageToBuy = paquete;
+            document.getElementById('modalPackageName').textContent = paquete;
+            mP.classList.remove('pointer-events-none', 'opacity-0');
+        }
+
+        function closePurchaseModal() { 
+            mP.classList.add('pointer-events-none', 'opacity-0'); 
+        }
+
+        document.getElementById('btnConfirmPurchase').addEventListener('click', function() {
+            const mensaje = `Hola Comandante, quiero comprar el paquete de ${currentPackageToBuy}`;
+            const telefonoAdmin = "584129562946";
+            const linkWa = `https://wa.me/${telefonoAdmin}?text=${encodeURIComponent(mensaje)}`;
+            window.open(linkWa, '_blank');
+            closePurchaseModal();
+        });
+
+        // 5. REDES SOCIALES Y VOTACIÓN
+        let curSoc = '';
+        function confirmSocial(n, u, c) {
+            curSoc = u; document.getElementById('socialName').textContent = n;
+            document.getElementById('socialName').className = "text-3xl font-military mb-10 uppercase tracking-[0.2em] " + c;
+            document.getElementById('socialModal').classList.remove('pointer-events-none', 'opacity-0');
+        }
+        function closeSocialModal() { document.getElementById('socialModal').classList.add('pointer-events-none', 'opacity-0'); }
+        
+        document.getElementById('socialConfirmBtn').onclick = () => { 
+            window.open(curSoc, '_blank'); 
+            closeSocialModal(); 
+        };
+
+        function voteSkin(s) {
+            const msg = `Voto Hall de Fama: ${s}`;
+            const url = `https://wa.me/584129562946?text=${encodeURIComponent(msg)}`;
+            confirmSocial('VOTAR SKIN', url, 'text-red-600');
+        }
+
+        // 6. FORMULARIO DE TORNEO (SUBIDA DE IMAGEN Y NETLIFY)
+        const fileInput = document.getElementById('fileInput');
+        if(fileInput) {
+            fileInput.addEventListener('change', function(e) {
+                const display = document.getElementById('fileNameDisplay');
+                if (this.files && this.files[0]) {
+                    display.textContent = "ARCHIVO: " + this.files[0].name;
+                    display.style.opacity = "1";
+                } else {
+                    display.style.opacity = "0";
+                }
+            });
+        }
+        
+        const enlistForm = document.getElementById('enlistForm');
+        if(enlistForm) {
+            enlistForm.addEventListener('submit', function(e) {
+                // Dejamos que Netlify procese el formulario nativamente.
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = 'ENVIANDO DATOS...'; 
+                btn.classList.add('animate-pulse');
+            });
+        }
     </script>
+                
 </body>
+                
 </html>
                          
         
