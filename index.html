@@ -342,7 +342,7 @@
             </section>
         </main>
     </div> <!-- FIN DE VIEW-HOME (INICIO) -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
     <!-- VISTA OCULTA 1: BANCO DE DATOS (ARSENAL & HUD)                -->
     <!-- ============================================================== -->
     <div id="view-databank" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-12 animate-fade-in">
@@ -363,376 +363,141 @@
             <!-- ESTRUCTURA UNIFICADA: BR Y MJ -->
             <div id="content-databank-inner" class="space-y-16">
                 
-                <!-- SECCIÓN BR -->
+                <!-- ========================================== -->
+                <!-- SECCIÓN BATTLE ROYALE (BR)                 -->
+                <!-- ========================================== -->
                 <div>
                     <h3 class="text-2xl font-military text-white mb-6 border-l-4 border-cod-orange pl-4 uppercase">Battle Royale (BR)</h3>
-                    <div class="flex gap-2 mb-8">
-                        <button onclick="switchHudTab('br', 'mobile')" id="btn-br-mobile" class="flex-1 py-3 font-military bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)]">MOBILE</button>
-                        <button onclick="switchHudTab('br', 'pad')" id="btn-br-pad" class="flex-1 py-3 font-military text-gray-500 border border-gray-700 tactical-border cursor-pointer">PAD</button>
+                    
+                    <div class="flex gap-2 mb-8 max-w-sm">
+                        <button onclick="switchHudTab('br', 'mobile')" id="btn-br-mobile" class="flex-1 py-3 font-military uppercase tracking-widest bg-cod-orange text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(255,140,0,0.2)] transition-all">MOBILE</button>
+                        <button onclick="switchHudTab('br', 'pad')" id="btn-br-pad" class="flex-1 py-3 font-military uppercase tracking-widest text-gray-500 border border-gray-700 tactical-border cursor-pointer transition-all hover:text-white hover:border-white">PAD</button>
                     </div>
-                    <!-- CONTENEDORES BR -->
-                    <div id="content-br-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Aquí va la tarjeta de jugador (Mobile) -->
-                        <!-- TARJETA 1: TOPG -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                    
+                    <!-- === BR MOBILE (TUS 3 JUGADORES + 1 PLANTILLA) === -->
+                    <div id="content-br-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
                         
-                        <!-- Caja de la foto con Zoom y Marca de agua -->
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <!-- La imagen -->
-                            <img src="images/topg.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            
-                            <!-- Botón oscuro de Ampliar -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                        <!-- JUGADOR 1: TOP G -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="images/topg.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla 6,67</span>
                             </div>
-                            
-                            <!-- Neta Traslúcida: "FOTO AQUÍ" -->
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla 6,67</span>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">Redmi note 13 pro 5g - 4 DEDOS</h4>
+                            <a href="https://www.tiktok.com/@topgcod" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                Top G
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Distribución Equilibrada</p>
+                            <button onclick="copyCode('729946038321963-7412979946038321965')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
+                        </div>
+
+                        <!-- JUGADOR 2: Rz -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="images/Rz乄PȺƬƦØCLO.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla 6,67</span>
+                            </div>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">Tecno Camon 20 PRO - 5 Dedos</h4>
+                            <a href="https://www.tiktok.com/@.musicod" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                Rz乄PȺƬƦØCLO
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Movimiento de cámara con el dedo índice derecho</p>
+                            <button onclick="copyCode('7283527467071734469-7283527467071734472')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
+                        </div>
+
+                        <!-- JUGADOR 3: YISUS -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="images/YĮSŪSB×GØD.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla de 6,78 Pulgadas</span>
+                            </div>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">TECNO POVA 5 - 2 DEDOS</h4>
+                            <a href="https://www.tiktok.com/@yisusjjba" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                @YĮSŪSB×GØD
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Rango de movilidad ampliado</p>
+                            <button onclick="copyCode('7283324027360263578-7283324023065296276')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
                         </div>
                         
-                        <h4 class="text-2xl font-military text-white mb-1 lowercase">Redmi note 13 pro 5g- 4 DEDOS</h4>
-                        
-                        <!-- Enlace a TikTok -->
-                        <a href="https://www.tiktok.com/@topgcod" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            Top G
-                        </a>
-                        
-                        <p class="text-gray-400 font-tech text-xs mb-6 lowercase tracking-widest flex-grow">Distribución Equilibrada</p>
-                        
-                        <button onclick="copyCode('729946038321963-7412979946038321965')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-                        <!-- PLANTILLA 1 -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="images/Rz乄PȺƬƦØCLO.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                        <!-- PLANTILLA 4 (BR MOBILE - VACÍA) -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
                             </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla 6,67</span>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
+                            <a href="#" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                @usuario_tiktok
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
+                            <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">COPIAR CÓDIGO HUD</button>
                         </div>
-                        <h4 class="text-2xl font-military text-white mb-1 lowercase">Tecno Camon 20 PRO - 5 Dedos</h4>
-                        <a href="https://www.tiktok.com/@.musicod" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            Rz乄PȺƬƦØCLO
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 lowercase tracking-widest flex-grow">Movimiento de cámara con el dedo índice derecho </p>
-                        <button onclick="copyCode('7283527467071734469-7283527467071734472')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
                     </div>
 
-                    <!-- PLANTILLA 2 -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="images/YĮSŪSB×GØD.jpg" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">Pantalla de 6,78 Pulgadas</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 lowercase">TECNO POVA 5 - 2 DEDOS</h4>
-                        <a href="https://www.tiktok.com/@yisusjjba" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @YĮSŪSB×GØD
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 lowercase tracking-widest flex-grow">Rango de movilidad ampliado</p>
-                        <button onclick="copyCode('7283324027360263578-7283324023065296276')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 3 -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 4 -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-                    </div>
-                    <div id="content-br-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- === BR PAD (4 PLANTILLAS VACÍAS) === -->
+                    <div id="content-br-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
                         <!-- PLANTILLA 1 (BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
                             </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
+                            <a href="#" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                @usuario_tiktok
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
+                            <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all mt-auto">COPIAR CÓDIGO HUD</button>
                         </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 2 (BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                        <!-- PLANTILLA 2 (BR PAD) -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
                             </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
+                            <a href="#" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
+                                @usuario_tiktok
+                            </a>
+                            <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
+                            <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all mt-auto">COPIAR CÓDIGO HUD</button>
                         </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 3 (BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                        <!-- PLANTILLA 3 (BR PAD) -->
+                        <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
+                            <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
+                                <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
+                                </div>
+                                <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
                             </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 4 (BR PAD) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-orange transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-orange hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                <!-- SECCIÓN MJ -->
-                <div>
-                    <h3 class="text-2xl font-military text-white mb-6 border-l-4 border-cod-gold pl-4 uppercase">Multijugador (MJ)</h3>
-                    <div class="flex gap-2 mb-8">
-                        <button onclick="switchHudTab('mj', 'mobile')" id="btn-mj-mobile" class="flex-1 py-3 font-military bg-cod-gold text-black tactical-border cursor-pointer shadow-[0_0_15px_rgba(229,193,0,0.2)]">MOBILE</button>
-                        <button onclick="switchHudTab('mj', 'pad')" id="btn-mj-pad" class="flex-1 py-3 font-military text-gray-500 border border-gray-700 tactical-border cursor-pointer">PAD</button>
-                    </div>
-                    <!-- CONTENEDORES MJ -->
-                    <div id="content-mj-mobile" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      <!-- PLANTILLA 1 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 2 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 3 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 4 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-                    <div id="content-mj-pad" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- PLANTILLA 1 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 2 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 3 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
-
-                    <!-- PLANTILLA 4 (MJ - DORADO) -->
-                    <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-cod-gold transition-all flex flex-col">
-                        <div onclick="openImageModal(this.querySelector('img').src)" class="relative h-40 bg-gray-900 mb-4 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom">
-                            <img src="" alt="HUD" class="w-full h-full object-cover opacity-80 group-hover/zoom:opacity-100 transition-opacity duration-300 relative z-10">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-20">
-                                <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR IMAGEN</span>
-                            </div>
-                            <span class="absolute text-white/20 font-military text-xl z-0 pointer-events-none">FOTO AQUÍ</span>
-                        </div>
-                        <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
-                        <a href="https://www.tiktok.com/@usuario" target="_blank" class="text-cod-gold font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.88 1.58 0 2.85-1.29 2.85-2.88V0h.01z"/></svg>
-                            @usuario_tiktok
-                        </a>
-                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-widest flex-grow">Descripción: Optimizado para...</p>
-                        <button onclick="copyCode('PEGAR_CODIGO_AQUI')" class="w-full py-4 bg-white/5 border border-white/10 text-white font-tech uppercase tracking-widest cursor-pointer hover:bg-cod-gold hover:text-black transition-all active:scale-95 mt-auto">
-                            COPIAR CÓDIGO HUD
-                        </button>
-                    </div>
+                            <h4 class="text-2xl font-military text-white mb-1 uppercase">DISPOSITIVO - DEDOS</h4>
+                            <a href="#" target="_blank" class="text-cod-orange font-tech text-sm mb-3 hover:underline inline-flex items-center gap-1 font-bold tracking-widest">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V14.5c0 3.23-2.61 5.86-5.83 5.86-3.22 0-5.83-2.63-5.83-5.86 0-3.23 2.61-5.86 5.83-5.86.3 0 .59.02.88.07V12.1a2.84 2.84 0 0 0-.88-.14c-1.58 0-2.85 1.29-2.85 2.88 0 1.59 1.27 2.88 2.85 2.8
     <!-- ============================================================== -->
     <!-- VISTA OCULTA 2: HALL DE LA FAMA (VOTACIONES)                  -->
     <!-- ============================================================== -->
