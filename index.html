@@ -74,11 +74,15 @@
     <!-- === MENÚ OVERLAY === -->
     <div id="tacticalMenu" class="fixed inset-0 z-[65] bg-black/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 ease-out flex flex-col items-center justify-center">
         <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
-        <nav class="flex flex-col gap-8 text-center relative z-10 font-military uppercase tracking-[0.2em]">
-            <button onclick="changeView('home')" class="text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">INICIO</button>
-            <button onclick="changeView('databank')" class="text-3xl text-white hover:text-cod-orange transition-all cursor-pointer">CLASES & HUD</button>
-            <button onclick="changeView('hall')" class="text-3xl text-white hover:text-red-500 transition-all cursor-pointer">HALL DE FAMA</button>
-            <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-xl text-gray-500 hover:text-white transition-all cursor-pointer">TIENDA CP</button>
+        <nav class="flex flex-col gap-6 md:gap-8 text-center relative z-10 font-military uppercase tracking-[0.2em]">
+            <button onclick="changeView('home')" class="text-2xl md:text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">INICIO</button>
+            <button onclick="changeView('databank')" class="text-2xl md:text-3xl text-white hover:text-cod-orange transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-cod-orange rotate-45"></span> CLASES & HUD</button>
+            <button onclick="changeView('hall')" class="text-2xl md:text-3xl text-white hover:text-red-500 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-red-500 rotate-45"></span> HALL DE FAMA</button>
+            
+            <!-- NUEVO BOTÓN DE COMPRA Y VENTA DE CUENTAS -->
+            <button onclick="changeView('accounts')" class="text-2xl md:text-3xl text-white hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-blue-500 rotate-45"></span> COMPRA Y VENTA</button>
+            
+            <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-lg md:text-xl text-gray-500 hover:text-white transition-all cursor-pointer">TIENDA CP</button>
         </nav>
     </div>
 
@@ -770,6 +774,171 @@
             </div>
         </div>
     </div>
+<!-- ============================================================== -->
+    <!-- VISTA OCULTA: GUÍA COMPRA Y VENTA DE CUENTAS (FACEBOOK)        -->
+    <!-- ============================================================== -->
+    <div id="view-accounts" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-20 animate-fade-in">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <!-- Botón Volver -->
+            <button onclick="changeView('home')" class="mb-10 text-blue-400 font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
+                <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
+            </button>
+
+            <!-- Título Principal -->
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-l from-blue-500/50 to-transparent skew-x-[20deg]"></div>
+                    <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                        COMPRA Y VENTA <span class="text-blue-500">DE CUENTAS</span>
+                    </h2>
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-r from-blue-500/50 to-transparent skew-x-[20deg]"></div>
+                </div>
+                <p class="text-gray-400 font-tech text-sm md:text-base tracking-[0.3em] uppercase">
+                    Lee primero antes de entrar al grupo
+                </p>
+            </div>
+
+            <!-- CONTENIDO DEL BLOG / GUÍA -->
+            <div class="space-y-8">
+                
+                <!-- BLOQUE 1: ¿CÓMO FUNCIONA EL GRUPO? -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-6 md:p-8 tactical-border">
+                    <h3 class="text-xl md:text-2xl font-military text-white mb-4 uppercase tracking-wider border-l-4 border-blue-500 pl-3">
+                        1. ¿Cómo funciona la dinámica?
+                    </h3>
+                    <p class="text-gray-300 font-tech text-base md:text-lg leading-relaxed mb-4">
+                        Disponemos de un grupo oficial en Facebook para que tanto miembros como no miembros de nuestra comunidad puedan publicar sus cuentas de forma <strong class="text-white">100% gratuita</strong> y recibir ofertas directamente en sus publicaciones.
+                    </p>
+                    <div class="bg-black/60 border border-white/5 p-4 rounded-sm">
+                        <h4 class="text-blue-400 font-military text-sm uppercase mb-2 tracking-widest">Paso a paso de la transacción:</h4>
+                        <ol class="text-gray-400 font-tech text-sm md:text-base space-y-2 list-decimal list-inside">
+                            <li><strong class="text-white">Publicas tu cuenta</strong> cumpliendo los requisitos obligatorios del grupo.</li>
+                            <li><strong class="text-white">Recibes ofertas</strong> y te pones de acuerdo con el comprador en los comentarios.</li>
+                            <li><strong class="text-white">Contactan a un Administrador</strong> en nuestro grupo oficial de WhatsApp para solicitar el servicio de intermediario seguro.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2: SERVICIO DE INTERMEDIARIO (ESCROW) -->
+                <div class="bg-[#0a0a0a] border border-blue-500/30 p-6 md:p-8 tactical-border relative shadow-[0_0_25px_rgba(59,130,246,0.1)]">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-black px-3 py-1 font-tech tracking-widest uppercase">SEGURIDAD GARANTIZADA</div>
+                    <h3 class="text-xl md:text-2xl font-military text-white mb-4 uppercase tracking-wider border-l-4 border-blue-500 pl-3">
+                        2. Servicio de Intermediario Oficial
+                    </h3>
+                    <p class="text-gray-300 font-tech text-base md:text-lg leading-relaxed mb-6">
+                        Las estafas y pérdidas de dinero son muy frecuentes en tratos directos por Facebook. Para evitar riesgos, nuestros administradores actúan como mediadores neutrales: retenemos el dinero y verificamos el traspaso de la cuenta antes de liberar los fondos.
+                    </p>
+                    
+                    <!-- Tarifas -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-black border border-white/10 p-4 text-center rounded-sm">
+                            <span class="text-xs text-gray-500 font-tech uppercase tracking-widest block mb-1">Cuentas menores a $50 USD</span>
+                            <span class="text-3xl font-military text-blue-400">$4.00 USD</span>
+                            <span class="text-xs text-gray-400 font-tech block mt-1">Tarifa Plana de Traspaso</span>
+                        </div>
+                        <div class="bg-black border border-white/10 p-4 text-center rounded-sm">
+                            <span class="text-xs text-gray-500 font-tech uppercase tracking-widest block mb-1">Cuentas de $50 USD o más</span>
+                            <span class="text-3xl font-military text-blue-400">10%</span>
+                            <span class="text-xs text-gray-400 font-tech block mt-1">Del valor acordado de la cuenta</span>
+                        </div>
+                    </div>
+
+                    <!-- Cláusula de Responsabilidad -->
+                    <div class="bg-blue-900/10 border-l-2 border-blue-500 p-4">
+                        <p class="text-sm text-blue-200 font-tech">
+                            <strong class="text-blue-400 font-bold">[RESPONSABILIDAD]:</strong> Si contratas a nuestro equipo como intermediario, nos hacemos <strong class="text-white">100% responsables</strong> de que tu transacción sea transparente y sin riesgo. Si decides negociar por tu cuenta o con administradores ajenos a T.CODmobileVZLA, quedas bajo tu propio riesgo en caso de fraude.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: NORMAS DE PUBLICACIÓN (19 AGOSTO 2026) -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-6 md:p-8 tactical-border">
+                    <div class="flex items-center gap-2 text-red-500 font-tech text-xs uppercase tracking-widest mb-2 font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Actualización: 19 de Agosto de 2026</span>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-military text-white mb-4 uppercase tracking-wider border-l-4 border-red-500 pl-3">
+                        3. Formato Obligatorio para Publicar
+                    </h3>
+                    <p class="text-gray-300 font-tech text-base md:text-lg leading-relaxed mb-6">
+                        Para combatir el spam y proteger la comunidad, las publicaciones ahora son privadas y aprobadas manualmente por los admins. Tu post debe incluir obligatoriamente:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-tech text-gray-300 mb-4">
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Código UID:</strong> Visible y exacto.
+                        </div>
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Región:</strong> INDIA, LATAM o NA.
+                        </div>
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Accesos:</strong> Gmail, Activision, Facebook.
+                        </div>
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Año de creación:</strong> Fecha aproximada.
+                        </div>
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Razón de venta:</strong> Breve motivo.
+                        </div>
+                        <div class="flex items-center gap-2 bg-black/60 p-3 border border-white/5">
+                            <span class="text-cod-gold font-bold">•</span> <strong>Precio:</strong> En Dólares ($USD).
+                        </div>
+                    </div>
+                    <p class="text-gray-400 font-tech text-xs tracking-wider uppercase">
+                        * Adjuntar obligatoriamente 1 o 2 fotos/videos de los ítems más valiosos (Armas o Personajes Míticos / Legendarios).
+                    </p>
+                </div>
+
+                <!-- BLOQUE 4: SERVICIOS ADICIONALES (AVALÚO & DIFUSIÓN) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Avalúo -->
+                    <div class="bg-[#0a0a0a] border border-cod-gold/30 p-6 tactical-border flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-cod-gold font-tech tracking-widest uppercase block mb-1">¿Dudas con tu cuenta?</span>
+                            <h4 class="text-xl font-military text-white mb-2 uppercase">Servicio de Avalúo</h4>
+                            <p class="text-gray-400 font-tech text-sm leading-relaxed mb-4">
+                                Si no conoces la región, los accesos vinculados o el valor real de mercado de tu cuenta, nosotros la auditamos por ti.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+                            <span class="text-2xl font-military text-cod-gold">$0.50 USD</span>
+                            <span class="text-xs text-gray-500 font-tech uppercase">Vía WhatsApp Admin / DMs</span>
+                        </div>
+                    </div>
+
+                    <!-- Difusión Exprés -->
+                    <div class="bg-[#0a0a0a] border border-orange-500/30 p-6 tactical-border flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-cod-orange font-tech tracking-widest uppercase block mb-1">Venta Acelerada</span>
+                            <h4 class="text-xl font-military text-white mb-2 uppercase">Pack Difusión Exprés</h4>
+                            <p class="text-gray-400 font-tech text-sm leading-relaxed mb-4">
+                                Mayor alcance inmediato con una publicación en nuestras Historias de Instagram, Facebook, TikTok y Estados de WhatsApp.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+                            <span class="text-2xl font-military text-cod-orange">$0.50 USD</span>
+                            <span class="text-xs text-gray-500 font-tech uppercase">Máxima Exposición</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 5: BOTÓN CTA A FACEBOOK -->
+                <div class="pt-6 text-center">
+                    <a href="https://www.facebook.com/share/1C4pg52dJY/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full md:w-auto px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white font-military text-xl uppercase tracking-widest tactical-border shadow-[0_0_30px_rgba(37,99,235,0.4)] active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        IR AL GRUPO DE FACEBOOK >
+                    </a>
+                    <p class="text-gray-500 font-tech text-xs tracking-widest uppercase mt-4">
+                        Comunidad oficial de traspasos y comercio de T.CODmobileVZLA
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
     <!-- === FOOTER REPARADO: REDES, BRILLO Y TEXTO VISIBLE === -->
     <footer class="relative z-10 bg-[#020202] pt-16 pb-24 border-t border-white/10 overflow-hidden">
         
@@ -889,8 +1058,13 @@
         }
 
         function changeView(view) {
-            const views = { home: document.getElementById('view-home'), databank: document.getElementById('view-databank'), hall: document.getElementById('view-hall') };
-            Object.values(views).forEach(v => v.classList.add('hidden'));
+            const views = { 
+                home: document.getElementById('view-home'), 
+                databank: document.getElementById('view-databank'), 
+                hall: document.getElementById('view-hall'),
+                accounts: document.getElementById('view-accounts')
+            };
+            Object.values(views).forEach(v => { if(v) v.classList.add('hidden'); });
             if(views[view]) views[view].classList.remove('hidden');
             window.scrollTo(0,0);
             if(!document.getElementById('tacticalMenu').classList.contains('translate-x-full')) toggleMenu();
