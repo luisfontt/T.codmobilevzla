@@ -75,15 +75,35 @@
     <div id="tacticalMenu" class="fixed inset-0 z-[65] bg-black/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 ease-out flex flex-col items-center justify-center">
         <div class="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
         <nav class="flex flex-col gap-6 md:gap-8 text-center relative z-10 font-military uppercase tracking-[0.2em]">
-            <button onclick="changeView('home')" class="text-2xl md:text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">INICIO</button>
-            <button onclick="changeView('databank')" class="text-2xl md:text-3xl text-white hover:text-cod-orange transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-cod-orange rotate-45"></span> CLASES & HUD</button>
-            <button onclick="changeView('hall')" class="text-2xl md:text-3xl text-white hover:text-red-500 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-red-500 rotate-45"></span> HALL DE FAMA</button>
-            <button onclick="changeView('accounts')" class="text-2xl md:text-3xl text-white hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-blue-500 rotate-45"></span> COMPRA Y VENTA</button>
+            <!-- 1. INICIO -->
+            <button onclick="changeView('home')" class="text-2xl md:text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">
+                INICIO
+            </button>
             
-            <!-- NUEVO BOTÓN: TIENDA DE MERCANCÍA -->
-            <button onclick="changeView('merch')" class="text-2xl md:text-3xl text-white hover:text-green-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-green-500 rotate-45"></span> TIENDA DE MERCANCÍA</button>
+            <!-- 2. TIENDA DE MERCANCÍA (DEBAJO DE INICIO) -->
+            <button onclick="changeView('merch')" class="text-2xl md:text-3xl text-white hover:text-green-400 transition-all cursor-pointer flex items-center justify-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rotate-45"></span> TIENDA DE MERCANCÍA
+            </button>
             
-            <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-lg md:text-xl text-gray-500 hover:text-white transition-all cursor-pointer">TIENDA CP</button>
+            <!-- 3. CLASES & HUD -->
+            <button onclick="changeView('databank')" class="text-2xl md:text-3xl text-white hover:text-cod-orange transition-all cursor-pointer flex items-center justify-center gap-2">
+                <span class="w-2 h-2 bg-cod-orange rotate-45"></span> CLASES & HUD
+            </button>
+
+            <!-- 4. COMPRA Y VENTA DE CUENTAS -->
+            <button onclick="changeView('accounts')" class="text-2xl md:text-3xl text-white hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rotate-45"></span> COMPRA Y VENTA
+            </button>
+
+            <!-- 5. HALL DE LA FAMA -->
+            <button onclick="changeView('hall')" class="text-2xl md:text-3xl text-white hover:text-red-500 transition-all cursor-pointer flex items-center justify-center gap-2">
+                <span class="w-2 h-2 bg-red-500 rotate-45"></span> HALL DE LA FAMA
+            </button>
+            
+            <!-- ACCESO DIRECTO RÁPIDO A TIENDA CP -->
+            <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-lg md:text-xl text-gray-500 hover:text-white transition-all cursor-pointer pt-2">
+                TIENDA CP
+            </button>
         </nav>
     </div>
 
@@ -1064,18 +1084,18 @@
                         </div>
                     </div>
 
-                    <!-- MINIATURAS PEQUEÑAS (1, 2 y 3) -->
-                    <div class="grid grid-cols-3 gap-2 mb-4">
+                    <!-- MINIATURAS PEQUEÑAS (1, 2 y 3) - CUADRADAS 1:1 -->
+                    <div class="grid grid-cols-3 gap-2.5 mb-4">
                         <!-- Miniatura 1 -->
-                        <div class="h-16 bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 1)">
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 1)">
                             <img src="images/Monkeybombgorra 1.png" alt="Vista 2" class="w-full h-full object-cover">
                         </div>
                         <!-- Miniatura 2 -->
-                        <div class="h-16 bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 2)">
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 2)">
                             <img src="images/Monkeybombgorra 2.png" alt="Vista 3" class="w-full h-full object-cover">
                         </div>
                         <!-- Miniatura 3 -->
-                        <div class="h-16 bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 3)">
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/Picsart_26-08-24_18-46-55-796.png', 'images/Monkeybombgorra 1.png', 'images/Monkeybombgorra 2.png', 'images/Monkeybombgorra 3.png'], 3)">
                             <img src="images/Monkeybombgorra 3.png" alt="Vista 4" class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -1088,7 +1108,8 @@
                             <span class="text-xs text-gray-300 font-tech uppercase tracking-widest">Color: <strong class="text-white">Beige</strong></span>
                         </div>
                         <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-wider flex-grow leading-relaxed">
-                            Bordado frontal de alta definición del icónico Monkey Bomb de Call of Duty. Ajuste táctico resistente.
+                            Gorra con Parche Grande del Icónico Monkey Bomb de Call of Duty, Cierre de Velcro Ajustable.
+Pensado para los Veteranos y Nostálgicos del Black Ops.
                         </p>
                         
                         <!-- PRECIO Y BOTÓN WHATSAPP -->
