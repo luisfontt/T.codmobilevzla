@@ -78,9 +78,10 @@
             <button onclick="changeView('home')" class="text-2xl md:text-3xl text-white hover:text-cod-gold transition-all cursor-pointer">INICIO</button>
             <button onclick="changeView('databank')" class="text-2xl md:text-3xl text-white hover:text-cod-orange transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-cod-orange rotate-45"></span> CLASES & HUD</button>
             <button onclick="changeView('hall')" class="text-2xl md:text-3xl text-white hover:text-red-500 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-red-500 rotate-45"></span> HALL DE FAMA</button>
+            <button onclick="changeView('accounts')" class="text-2xl md:text-3xl text-white hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-blue-500 rotate-45"></span> COMPRA Y VENTA</button>
             
-            <!-- NUEVO BOTÓN DE COMPRA Y VENTA DE CUENTAS -->
-            <button onclick="changeView('accounts')" class="text-2xl md:text-3xl text-white hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-blue-500 rotate-45"></span> COMPRA Y VENTA DE CUENTAS</button>
+            <!-- NUEVO BOTÓN: TIENDA DE MERCANCÍA -->
+            <button onclick="changeView('merch')" class="text-2xl md:text-3xl text-white hover:text-green-400 transition-all cursor-pointer flex items-center justify-center gap-2"><span class="w-2 h-2 bg-green-500 rotate-45"></span> MERCANCÍA</button>
             
             <button onclick="changeView('home'); setTimeout(() => document.getElementById('store-section').scrollIntoView({behavior: 'smooth'}), 150)" class="text-lg md:text-xl text-gray-500 hover:text-white transition-all cursor-pointer">TIENDA CP</button>
         </nav>
@@ -1023,6 +1024,95 @@
 
         </div>
     </div>
+    <!-- ============================================================== -->
+    <!-- VISTA OCULTA: TIENDA DE MERCANCÍA OFICIAL                     -->
+    <!-- ============================================================== -->
+    <div id="view-merch" class="hidden fixed inset-0 z-[60] bg-[#050505] overflow-y-auto pt-24 pb-20 animate-fade-in">
+        <div class="max-w-5xl mx-auto px-4">
+            
+            <!-- Botón Volver -->
+            <button onclick="changeView('home')" class="mb-10 text-green-400 font-tech uppercase tracking-[0.2em] cursor-pointer flex items-center gap-2 active:scale-95 transition-all group">
+                <span class="text-2xl group-hover:-translate-x-2 transition-transform"><</span> VOLVER AL CUARTEL
+            </button>
+
+            <!-- Título Principal -->
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-l from-green-500/50 to-transparent skew-x-[20deg]"></div>
+                    <h2 class="text-3xl md:text-5xl font-military text-white uppercase tracking-wider text-center drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]">
+                        TIENDA DE <span class="text-green-500">MERCANCÍA</span>
+                    </h2>
+                    <div class="hidden md:block h-2 flex-grow bg-gradient-to-r from-green-500/50 to-transparent skew-x-[-20deg]"></div>
+                </div>
+                <p class="text-gray-400 font-tech text-sm md:text-base tracking-[0.3em] uppercase">
+                    Equipamiento Oficial T.CODmobileVZLA
+                </p>
+            </div>
+
+            <!-- CUADRÍCULA DE PRODUCTOS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- PRODUCTO 1: GORRA MONKEY BOMB -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-green-500 transition-all flex flex-col shadow-xl">
+                    
+                    <!-- FOTO PRINCIPAL / PORTADA -->
+                    <div class="relative h-64 bg-gray-900 mb-3 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom" onclick="openGalleryModal(['images/1000886151.jpeg', 'images/1000886152.jpeg', 'images/1000886150.jpeg'], 0)">
+                        <div class="absolute top-2 left-2 z-20 bg-green-600 text-black text-[9px] font-black px-2 py-0.5 font-tech tracking-wider uppercase">OFICIAL T.COD</div>
+                        <img id="main-merch-img-1" src="images/1000886151.jpeg" alt="Gorra Monkey Bomb" class="w-full h-full object-cover opacity-90 group-hover/zoom:opacity-100 group-hover/zoom:scale-105 transition-all duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-10">
+                            <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">AMPLIAR FOTOS (3) 🔍</span>
+                        </div>
+                    </div>
+
+                    <!-- MINIATURAS (3 FOTOS) -->
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <div class="h-16 bg-gray-900 rounded border border-green-500/50 overflow-hidden cursor-pointer hover:opacity-100 transition-opacity" onclick="openGalleryModal(['images/1000886151.jpeg', 'images/1000886152.jpeg', 'images/1000886150.jpeg'], 0)">
+                            <img src="images/1000886151.jpeg" alt="Vista 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="h-16 bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-all" onclick="openGalleryModal(['images/1000886151.jpeg', 'images/1000886152.jpeg', 'images/1000886150.jpeg'], 1)">
+                            <img src="images/1000886152.jpeg" alt="Vista 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="h-16 bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-all" onclick="openGalleryModal(['images/1000886151.jpeg', 'images/1000886152.jpeg', 'images/1000886150.jpeg'], 2)">
+                            <img src="images/1000886150.jpeg" alt="Vista 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- INFORMACIÓN DEL PRODUCTO -->
+                    <div class="flex flex-col flex-grow">
+                        <h4 class="text-2xl font-military text-white mb-1 uppercase tracking-wide">Gorra Monkey Bomb</h4>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-200"></span>
+                            <span class="text-xs text-gray-300 font-tech uppercase tracking-widest">Color: <strong class="text-white">Beige</strong></span>
+                        </div>
+                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-wider flex-grow leading-relaxed">
+                            Bordado frontal de alta definición del icónico Monkey Bomb de Call of Duty. Ajuste táctico resistente.
+                        </p>
+                        
+                        <!-- PRECIO Y BOTÓN WHATSAPP -->
+                        <div class="border-t border-white/10 pt-4 flex flex-col gap-3 mt-auto">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 font-tech uppercase tracking-widest">Precio Oficial</span>
+                                <span class="text-2xl font-military text-cod-gold drop-shadow-md">20$ BCV</span>
+                            </div>
+                            <a href="https://wa.me/584129562946?text=Hola%20Comandante%2C%20quiero%20consultar%20disponibilidad%20%2F%20comprar%3A%20Gorra%20Monkey%20Bomb%20(Color%20Beige%20-%2020%24%20BCV)" target="_blank" rel="noopener noreferrer" class="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-military text-sm uppercase tracking-widest text-center tactical-border shadow-[0_0_15px_rgba(34,197,94,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                CONSULTAR / COMPRAR
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ESPACIO DISPONIBLE (PRÓXIMO PRODUCTO) -->
+                <div class="bg-[#0a0a0a] border border-dashed border-gray-700 p-8 tactical-border flex flex-col items-center justify-center text-center min-h-[420px]">
+                    <span class="text-5xl text-gray-700 font-military mb-4">📦</span>
+                    <h4 class="text-xl font-military text-gray-500 mb-2 uppercase">PRÓXIMO DROP</h4>
+                    <p class="text-gray-600 font-tech text-xs uppercase tracking-widest">Nuevas prendas y accesorios oficiales en camino.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
     
     <!-- === FOOTER REPARADO: REDES, BRILLO Y TEXTO VISIBLE === -->
     <footer class="relative z-10 bg-[#020202] pt-16 pb-24 border-t border-white/10 overflow-hidden">
@@ -1113,21 +1203,33 @@
         </div>
     </div>
 
-    <!-- === MODAL ZOOM DE IMAGEN === -->
+   <!-- === MODAL ZOOM DE IMAGEN / GALERÍA CON CARRUSEL === -->
     <div id="imageModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/95 opacity-0 pointer-events-none transition-all duration-300">
+        
         <!-- Botón de Cerrar (X) -->
-        <button onclick="closeImageModal()" class="absolute top-5 right-5 text-white text-4xl font-bold p-4 hover:text-cod-orange z-[210] cursor-pointer">✕</button>
+        <button onclick="closeImageModal()" class="absolute top-4 right-4 text-white text-3xl md:text-4xl font-bold p-3 hover:text-cod-orange z-[220] cursor-pointer">✕</button>
         
+        <!-- Contador de Fotos (Ej: 1 / 3) -->
+        <div id="galleryCounter" class="absolute top-6 left-6 z-[220] bg-black/80 border border-white/20 px-3 py-1 text-cod-gold font-military text-xs uppercase tracking-widest hidden">
+            1 / 1
+        </div>
+
+        <!-- Flecha Anterior (‹) -->
+        <button id="galleryPrevBtn" onclick="prevGalleryImage(event)" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-[220] w-12 h-12 bg-black/80 border border-white/20 hover:border-cod-gold text-white hover:text-cod-gold flex items-center justify-center font-military text-3xl tactical-border cursor-pointer transition-all active:scale-90 hidden select-none">
+            ‹
+        </button>
+
         <!-- Imagen Ampliada -->
-        <img id="modalImage" src="" class="max-h-[90vh] max-w-[95vw] object-contain border border-white/10 tactical-border shadow-[0_0_30px_rgba(0,0,0,0.8)] relative z-[205]">
+        <img id="modalImage" src="" class="max-h-[85vh] max-w-[90vw] object-contain border border-white/10 tactical-border shadow-[0_0_30px_rgba(0,0,0,0.8)] relative z-[205] transition-all duration-200">
+
+        <!-- Flecha Siguiente (›) -->
+        <button id="galleryNextBtn" onclick="nextGalleryImage(event)" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-[220] w-12 h-12 bg-black/80 border border-white/20 hover:border-cod-gold text-white hover:text-cod-gold flex items-center justify-center font-military text-3xl tactical-border cursor-pointer transition-all active:scale-90 hidden select-none">
+            ›
+        </button>
         
-        <!-- Fondo oscuro que también sirve para cerrar si tocas fuera de la foto -->
+        <!-- Fondo oscuro clicable para cerrar -->
         <div class="absolute inset-0 z-[200]" onclick="closeImageModal()"></div>
     </div>
-
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[150] bg-cod-panel border border-cod-gold text-white px-10 py-5 font-military opacity-0 translate-y-10 transition-all duration-300 pointer-events-none shadow-[0_0_40px_rgba(255,215,0,0.3)] uppercase tracking-[0.2em]">CÓDIGO COPIADO</div>
-
      <!-- === SCRIPTS DE FUNCIONALIDAD (OPTIMIZADOS Y LIMPIOS) === -->
     <script>
         // 1. NAVEGACIÓN Y MENÚ
@@ -1147,12 +1249,14 @@
                 home: document.getElementById('view-home'), 
                 databank: document.getElementById('view-databank'), 
                 hall: document.getElementById('view-hall'),
-                accounts: document.getElementById('view-accounts')
+                accounts: document.getElementById('view-accounts'),
+                merch: document.getElementById('view-merch')
             };
             Object.values(views).forEach(v => { if(v) v.classList.add('hidden'); });
             if(views[view]) views[view].classList.remove('hidden');
             window.scrollTo(0,0);
             if(!document.getElementById('tacticalMenu').classList.contains('translate-x-full')) toggleMenu();
+        }
         }
 
         // 2. SISTEMA DE PESTAÑAS Y COPIAR CÓDIGO (HUD)
@@ -1188,13 +1292,66 @@
             });
         }
 
-        // 3. LÓGICA DE ZOOM DE IMÁGENES (SOLUCIONADO)
-        function openImageModal(imgSrc) {
-            const imgModal = document.getElementById('imageModal');
+       // --- LÓGICA DE ZOOM DE IMÁGENES Y GALERÍAS (CARRUSEL) ---
+        let currentGalleryImages = [];
+        let currentGalleryIndex = 0;
+
+        function updateGalleryView() {
             const modalImage = document.getElementById('modalImage');
-            if(imgSrc && imgModal && modalImage) {
-                modalImage.src = imgSrc;
+            const counter = document.getElementById('galleryCounter');
+            const prevBtn = document.getElementById('galleryPrevBtn');
+            const nextBtn = document.getElementById('galleryNextBtn');
+
+            if (currentGalleryImages.length > 0 && modalImage) {
+                modalImage.src = currentGalleryImages[currentGalleryIndex];
+                
+                // Si hay más de 1 foto, mostramos flechas y contador
+                if (currentGalleryImages.length > 1) {
+                    if(counter) { 
+                        counter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`; 
+                        counter.classList.remove('hidden'); 
+                    }
+                    if(prevBtn) prevBtn.classList.remove('hidden');
+                    if(nextBtn) nextBtn.classList.remove('hidden');
+                } else {
+                    if(counter) counter.classList.add('hidden');
+                    if(prevBtn) prevBtn.classList.add('hidden');
+                    if(nextBtn) nextBtn.classList.add('hidden');
+                }
+            }
+        }
+
+        // Abre galería de múltiples fotos (como la Gorra)
+        function openGalleryModal(imagesArray, startIndex) {
+            const imgModal = document.getElementById('imageModal');
+            if (imagesArray && imagesArray.length > 0 && imgModal) {
+                currentGalleryImages = imagesArray;
+                currentGalleryIndex = startIndex || 0;
+                updateGalleryView();
                 imgModal.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Abre foto individual (para HUDs y Skins)
+        function openImageModal(imgSrc) {
+            if (imgSrc) {
+                openGalleryModal([imgSrc], 0);
+            }
+        }
+
+        function nextGalleryImage(e) {
+            if (e) e.stopPropagation();
+            if (currentGalleryImages.length > 1) {
+                currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+                updateGalleryView();
+            }
+        }
+
+        function prevGalleryImage(e) {
+            if (e) e.stopPropagation();
+            if (currentGalleryImages.length > 1) {
+                currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+                updateGalleryView();
             }
         }
 
@@ -1202,7 +1359,12 @@
             const imgModal = document.getElementById('imageModal');
             if(imgModal) {
                 imgModal.classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => { document.getElementById('modalImage').src = ""; }, 300); 
+                setTimeout(() => { 
+                    const modalImage = document.getElementById('modalImage');
+                    if(modalImage) modalImage.src = "";
+                    currentGalleryImages = [];
+                    currentGalleryIndex = 0;
+                }, 300); 
             }
         }
 
