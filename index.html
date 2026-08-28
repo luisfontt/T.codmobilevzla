@@ -295,6 +295,17 @@
                     </div>
                 </div>
             </section>
+
+            <!-- === BOTÓN FOSFORESCENTE: ACCESO / GUÍA DE WHATSAPP === -->
+            <div class="mb-24 text-center px-4 relative z-10">
+                <button onclick="openWhatsappGuideModal()" class="w-full max-w-2xl mx-auto py-5 px-6 bg-[#00FF66] hover:bg-[#00e65c] text-black font-military text-lg md:text-xl uppercase tracking-widest tactical-border shadow-[0_0_35px_rgba(0,255,102,0.7)] animate-pulse hover:animate-none active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-black shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>CONOCE NUESTRO GRUPO DE WHATSAPP</span>
+                </button>
+                <p class="text-xs text-gray-500 font-tech uppercase tracking-[0.3em] mt-3">
+                    Salas Diarias • Premios Flash • Cero Spam
+                </p>
+            </div>
             
             <!-- ============================================= -->
             <!-- 2. SECCIÓN: LIGA MENSUAL (PODIO VISUAL)       -->
@@ -1071,8 +1082,68 @@
 
             <!-- CUADRÍCULA DE PRODUCTOS -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- PRODUCTO 1: SHORT DE PLAYA - SKULLS CAMO (PORTADA ACTUALIZADA) -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-green-500 transition-all flex flex-col shadow-xl">
+                    
+                    <!-- FOTO PRINCIPAL / PORTADA GRANDE (FOTO PRINCIPAL ASIGNADA) -->
+                    <div class="relative h-64 bg-gray-900 mb-3 flex items-center justify-center overflow-hidden rounded border border-white/5 cursor-pointer group/zoom" onclick="openGalleryModal(['images/WhatsApp Image 2026-08-28 at 02.14.32.jpeg', 'images/short2.jpg', 'images/short3.jpg', 'images/short4.jpg'], 0)">
+                        <div class="absolute top-2 left-2 z-20 bg-green-600 text-black text-[9px] font-black px-2 py-0.5 font-tech tracking-wider uppercase">NUEVO DROP • T.COD</div>
+                        <img id="main-merch-img-short" src="images/WhatsApp Image 2026-08-28 at 02.14.32.jpeg" alt="Short de Playa Skulls Camo" class="w-full h-full object-cover opacity-90 group-hover/zoom:opacity-100 group-hover/zoom:scale-105 transition-all duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity duration-300 z-10">
+                            <span class="text-white font-military text-xs tracking-widest bg-black/90 border border-white/20 px-4 py-2 rounded shadow-lg">VER FOTOS (4) 🔍</span>
+                        </div>
+                    </div>
+
+                    <!-- MINIATURAS PEQUEÑAS (1, 2 y 3) - CUADRADAS 1:1 -->
+                    <div class="grid grid-cols-3 gap-2.5 mb-4">
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/WhatsApp Image 2026-08-28 at 02.14.32.jpeg', 'images/short2.jpg', 'images/short3.jpg', 'images/short4.jpg'], 1)">
+                            <img src="images/short2.jpg" alt="Vista 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/WhatsApp Image 2026-08-28 at 02.14.32.jpeg', 'images/short2.jpg', 'images/short3.jpg', 'images/short4.jpg'], 2)">
+                            <img src="images/short3.jpg" alt="Vista 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square bg-gray-900 rounded border border-white/10 hover:border-green-500 overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md" onclick="openGalleryModal(['images/WhatsApp Image 2026-08-28 at 02.14.32.jpeg', 'images/short2.jpg', 'images/short3.jpg', 'images/short4.jpg'], 3)">
+                            <img src="images/short4.jpg" alt="Vista 4" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- INFORMACIÓN DEL PRODUCTO -->
+                    <div class="flex flex-col flex-grow">
+                        <h4 class="text-2xl font-military text-white mb-1 uppercase tracking-wide">Short de Playa - Skulls Camo</h4>
+                        
+                        <!-- MUESTRA DE COLOR CON LAS DOS BOLITAS HEXADECIMALES -->
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <div class="flex items-center gap-1 shrink-0">
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/30 shadow-sm" style="background-color: #071427;" title="Azul Marino"></span>
+                                <span class="w-3.5 h-3.5 rounded-full border border-white/30 shadow-sm" style="background-color: #BEC8CA;" title="Gris Hielo"></span>
+                            </div>
+                            <span class="text-xs text-gray-300 font-tech uppercase tracking-wider">Gama Azul Marino y Gris Hielo</span>
+                        </div>
+
+                        <!-- TALLA -->
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs text-gray-400 font-tech uppercase tracking-widest">Talla: <strong class="text-cod-gold">Todas / Hecho a medida</strong></span>
+                        </div>
+
+                        <p class="text-gray-400 font-tech text-xs mb-6 uppercase tracking-wider flex-grow leading-relaxed">
+                            Short playero con camuflaje táctico de calaveras exclusivo de Call of Duty. Confeccionado a tu medida, tela de alta resistencia, suave al tacto, semipermeable y de secado rápido.
+                        </p>
+                        
+                        <!-- PRECIO Y BOTÓN WHATSAPP -->
+                        <div class="border-t border-white/10 pt-4 flex flex-col gap-3 mt-auto">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 font-tech uppercase tracking-widest">Precio Oficial</span>
+                                <span class="text-2xl font-military text-cod-gold drop-shadow-md">30$ BCV</span>
+                            </div>
+                            <a href="https://wa.me/584129562946?text=Hola%20Comandante%2C%20quiero%20consultar%20disponibilidad%20%2F%20comprar%3A%20Short%20de%20Playa%20-%20Skulls%20Camo%20(Talla%20Hecho%20a%20medida%20-%2030%24%20BCV)" target="_blank" rel="noopener noreferrer" class="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-military text-sm uppercase tracking-widest text-center tactical-border shadow-[0_0_15px_rgba(34,197,94,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                CONSULTAR / COMPRAR
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
-               <!-- PRODUCTO 1: GORRA MONKEY BOMB (MINIS ACTUALIZADAS) -->
+               <!-- PRODUCTO 2: GORRA MONKEY BOMB (MINIS ACTUALIZADAS) -->
                 <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border group hover:border-green-500 transition-all flex flex-col shadow-xl">
                     
                     <!-- FOTO PRINCIPAL / PORTADA GRANDE -->
@@ -1252,6 +1323,133 @@ Pensado para los Veteranos y Nostálgicos del Black Ops.
         
         <!-- Fondo oscuro clicable para cerrar -->
         <div class="absolute inset-0 z-[200]" onclick="closeImageModal()"></div>
+    </div>
+
+    <!-- === MODAL GUÍA / COMUNICADOS DE WHATSAPP === -->
+    <div id="whatsappGuideModal" class="fixed inset-0 z-[110] flex items-center justify-center px-4 py-6 opacity-0 pointer-events-none transition-all duration-300">
+        <!-- Fondo oscuro con blur -->
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeWhatsappGuideModal()"></div>
+        
+        <!-- Ventana Modal Táctica con Scroll -->
+        <div class="relative w-full max-w-3xl max-h-[88vh] bg-cod-panel border border-[#00FF66]/40 p-6 md:p-8 tactical-border-inv shadow-[0_0_60px_rgba(0,255,102,0.25)] flex flex-col z-10 overflow-hidden">
+            
+            <!-- Botón de Cerrar (X) -->
+            <button onclick="closeWhatsappGuideModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-bold p-2 z-20 cursor-pointer">✕</button>
+
+            <!-- Encabezado Fijo del Modal -->
+            <div class="text-center pb-6 border-b border-white/10 shrink-0">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-950/60 border border-green-500/30 text-[#00FF66] font-tech text-xs uppercase tracking-widest mb-3 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-[#00FF66] animate-pulse"></span> COMUNIDAD OFICIAL
+                </div>
+                <h3 class="text-2xl md:text-4xl font-military text-white uppercase tracking-wider drop-shadow-[0_0_15px_rgba(0,255,102,0.4)]">
+                    OPERACIONES EN <span class="text-[#00FF66]">WHATSAPP</span>
+                </h3>
+                <p class="text-gray-400 font-tech text-xs md:text-sm tracking-[0.2em] uppercase mt-1">
+                    Grupo Silencioso • Solo Comunicados de Administradores
+                </p>
+                <p class="text-gray-300 font-tech text-xs md:text-sm mt-3 bg-black/60 p-3 border-l-2 border-[#00FF66] text-left">
+                    <strong>[AVISO IMPORTANTE]:</strong> En este grupo solo escriben los administradores. No te saturaremos de mensajes ni llenaremos el almacenamiento de tu teléfono.
+                </p>
+            </div>
+
+            <!-- Cuerpo con Scroll Interno -->
+            <div class="overflow-y-auto py-6 space-y-6 flex-grow pr-2">
+                
+                <!-- 1. SALAS AMISTOSAS DIARIAS -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-[#00FF66] pl-2">
+                            1. Salas Amistosas Diarias (Scríms)
+                        </h4>
+                        <span class="text-[10px] bg-green-950 text-[#00FF66] px-2 py-0.5 font-tech uppercase font-bold">LUN A VIE</span>
+                    </div>
+                    <ul class="text-gray-300 font-tech text-sm space-y-1.5 list-disc list-inside">
+                        <li><strong class="text-white">Horario:</strong> A partir de las 10:00 PM (Hora de Venezuela).</li>
+                        <li><strong class="text-white">Modalidad:</strong> Principalmente Escuadras (también Dúos e Individuales).</li>
+                        <li><strong class="text-white">Dinámica:</strong> A las 10:00 PM enviamos enlace y UID de sala con 10 min de cuenta regresiva. Entras en la casilla que quieras y puedes invitar amigos con banderita.</li>
+                        <li><strong class="text-white">Segunda Sala:</strong> Al terminar la primera, abrimos la 2da sala con 5 min de espera.</li>
+                        <li><strong class="text-white">Reconocimiento:</strong> Los ganadores envían captura al admin y se destacan en nuestra red de 10 grupos.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. SALAS FLASH CON PREMIOS -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-cod-yellow pl-2">
+                            2. Salas Flash con Premios Rápidos
+                        </h4>
+                        <span class="text-[10px] bg-yellow-950 text-cod-yellow px-2 py-0.5 font-tech uppercase font-bold">SORPRESA</span>
+                    </div>
+                    <ul class="text-gray-300 font-tech text-sm space-y-1.5 list-disc list-inside">
+                        <li><strong class="text-white">Frecuencia:</strong> 1 a 2 veces por semana.</li>
+                        <li><strong class="text-white">Premios:</strong> 80 COD Points o Pases de Suministros Semanales.</li>
+                        <li><strong class="text-white">Acceso directo:</strong> Sin requisitos previos. Se anuncian minutos antes de iniciar por chat de sala o WhatsApp para premiar a los miembros activos.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. SALAS ESPECIALES CON PREMIOS MAYORES -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-cod-orange pl-2">
+                            3. Eventos Especiales (Premios Mayores)
+                        </h4>
+                        <span class="text-[10px] bg-orange-950 text-cod-orange px-2 py-0.5 font-tech uppercase font-bold">5 A 10 GANADORES</span>
+                    </div>
+                    <ul class="text-gray-300 font-tech text-sm space-y-1.5 list-disc list-inside">
+                        <li><strong class="text-white">Aviso anticipado:</strong> Anunciados con días de antelación.</li>
+                        <li><strong class="text-white">Requisitos:</strong> Tareas sencillas en redes sociales (seguir, comentar, dar like).</li>
+                        <li><strong class="text-white">Acceso protegido:</strong> Se entrega contraseña privada de sala solo a quienes verificaron sus datos (UID + Teléfono + Red Social).</li>
+                        <li><strong class="text-white">Regla estricta:</strong> Se premia únicamente a quienes cumplieron los requisitos al pie de la letra.</li>
+                    </ul>
+                </div>
+
+                <!-- 4. TORNEOS COMPETITIVOS CON INSCRIPCIÓN -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-red-500 pl-2">
+                            4. Torneos Oficiales ($/Kill y Posición)
+                        </h4>
+                        <span class="text-[10px] bg-red-950 text-red-400 px-2 py-0.5 font-tech uppercase font-bold">PAUSADOS</span>
+                    </div>
+                    <p class="text-gray-300 font-tech text-sm leading-relaxed">
+                        Más de 1 año de experiencia organizando torneos cada 4 días con premios por bajas y posición. Contamos con sistema anti-hackers y nivelación por habilidad. <span class="text-red-400 font-bold">Actualmente en pausa temporal; avisaremos su reapertura por el grupo.</span>
+                    </p>
+                </div>
+
+                <!-- 5. ALERTAS DE OFERTAS FLASH DE CP -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-blue-500 pl-2 mb-2">
+                        5. Alertas de Descuentos y Ofertas de CP
+                    </h4>
+                    <p class="text-gray-300 font-tech text-sm leading-relaxed">
+                        Publicación semanal de precios actualizados y alertas tempranas inmediatas cuando Activision activa eventos de recargas dobles o descuentos de tiempo limitado.
+                    </p>
+                </div>
+
+                <!-- 6. AVISOS E INTELIGENCIA TÁCTICA -->
+                <div class="bg-[#0a0a0a] border border-white/10 p-5 tactical-border">
+                    <h4 class="text-lg md:text-xl font-military text-white uppercase tracking-wide border-l-4 border-purple-500 pl-2 mb-2">
+                        6. Avisos y Comunicados de Alta Relevancia
+                    </h4>
+                    <p class="text-gray-300 font-tech text-sm leading-relaxed">
+                        Solo compartimos noticias cruciales de actualizaciones o cambios de meta que beneficien directamente a la comunidad. Cero mensajes basura.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Pie del Modal: Botón Fosforescente de Entrada y Nota de Cuentas -->
+            <div class="pt-4 border-t border-white/10 text-center shrink-0">
+                <a href="https://chat.whatsapp.com/L4HFAsChC369te6VIBn5Jh" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 bg-[#00FF66] hover:bg-[#00e65c] text-black font-military text-base md:text-lg uppercase tracking-widest tactical-border shadow-[0_0_30px_rgba(0,255,102,0.8)] animate-pulse hover:animate-none active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-black"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    UNIRME AL GRUPO OFICIAL >
+                </a>
+                <p class="text-[11px] md:text-xs text-gray-400 font-tech leading-tight">
+                    <strong class="text-cod-gold uppercase">Aviso de Cuentas:</strong> En este grupo de WhatsApp <strong>NO</strong> se tocan temas de venta de cuentas. Para comprar o vender cuentas de forma segura, abre el menú de esta web y entra a <strong>'Compra y Venta de Cuentas'</strong> para acceder al grupo oficial de Facebook.
+                </p>
+            </div>
+
+        </div>
     </div>
      <!-- === SCRIPTS DE FUNCIONALIDAD (BLINDADO Y LIMPIO) === -->
     <script>
@@ -1483,6 +1681,17 @@ Pensado para los Veteranos y Nostálgicos del Black Ops.
                 });
             }
         });
+
+        // --- CONTROL DEL MODAL DE GUÍA DE WHATSAPP ---
+        function openWhatsappGuideModal() {
+            const m = document.getElementById('whatsappGuideModal');
+            if (m) m.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeWhatsappGuideModal() {
+            const m = document.getElementById('whatsappGuideModal');
+            if (m) m.classList.add('opacity-0', 'pointer-events-none');
+        }
     </script>
                 
 </body>
